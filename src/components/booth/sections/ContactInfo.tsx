@@ -38,52 +38,54 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
   }
 
   return (
-    <div className="min-h-[160px] flex flex-col">
+    <div className="h-full flex flex-col">
       <h3 className="text-lg font-bold text-brand-navy mb-2">Get in Touch</h3>
       
-      <div className="flex-grow space-y-2 overflow-hidden">
-        {contact.email && (
-          <div className="flex items-center gap-2">
-            <Mail className="w-3 h-3 text-primary-blue" />
-            <div className="min-w-0 flex-1">
-              <a 
-                href={`mailto:${contact.email}`}
-                className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors break-all"
-              >
-                {contact.email}
-              </a>
+      <div className="flex-grow flex flex-col justify-end pb-2">
+        <div className="space-y-2">
+          {contact.email && (
+            <div className="flex items-center gap-2">
+              <Mail className="w-3 h-3 text-primary-blue" />
+              <div className="min-w-0 flex-1">
+                <a 
+                  href={`mailto:${contact.email}`}
+                  className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors break-all"
+                >
+                  {contact.email}
+                </a>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {contact.phone && (
-          <div className="flex items-center gap-2">
-            <Phone className="w-3 h-3 text-primary-blue" />
-            <div>
-              <a 
-                href={`tel:${contact.phone}`}
-                className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors"
-              >
-                {contact.phone}
-              </a>
+          {contact.phone && (
+            <div className="flex items-center gap-2">
+              <Phone className="w-3 h-3 text-primary-blue" />
+              <div>
+                <a 
+                  href={`tel:${contact.phone}`}
+                  className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors"
+                >
+                  {contact.phone}
+                </a>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {contact.headquarters && (
-          <div className="flex items-center gap-2">
-            <MapPin className="w-3 h-3 text-primary-blue flex-shrink-0" />
-            <div>
-              <p className="text-xs text-brand-navy">
-                {contact.headquarters.city}, {contact.headquarters.province}
-              </p>
+          {contact.headquarters && (
+            <div className="flex items-center gap-2">
+              <MapPin className="w-3 h-3 text-primary-blue flex-shrink-0" />
+              <div>
+                <p className="text-xs text-brand-navy">
+                  {contact.headquarters.city}, {contact.headquarters.province}
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {contact.socialLinks && contact.socialLinks.length > 0 && (
-        <div className="pt-2 mt-2 border-t border-gray-100">
+        <div className="pt-2 mt-auto border-t border-gray-100">
           <div className="flex gap-1">
             {contact.socialLinks.slice(0, 4).map((link, index) => (
               <a

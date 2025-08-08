@@ -1,9 +1,9 @@
 import React from 'react'
-import { DeluxeBoothData } from '@/types/booth'
+import { DeluxeBoothData, StandardBoothData } from '@/types/booth'
 import { ExternalLink } from 'lucide-react'
 
 interface BoothHeaderProps {
-  sponsor: DeluxeBoothData
+  sponsor: DeluxeBoothData | StandardBoothData
 }
 
 const BoothHeader: React.FC<BoothHeaderProps> = ({ sponsor }) => {

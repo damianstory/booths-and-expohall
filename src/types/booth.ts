@@ -76,11 +76,13 @@ export interface EngagementActivityData {
   embedType?: 'iframe' | 'skills-gap-quiz'
 }
 
+export type BoothTier = 'diamond' | 'gold' | 'silver'
+
 export interface DeluxeBoothData {
   id: string
   name: string
   slug: string
-  tier: 'deluxe'
+  tier: 'diamond'
   logo: string
   tagline: string
   description: string
@@ -96,6 +98,28 @@ export interface DeluxeBoothData {
   brandColors: BrandColors
 }
 
+export interface StandardBoothData {
+  id: string
+  name: string
+  slug: string
+  tier: 'gold' | 'silver'
+  logo: string
+  tagline: string
+  description: string
+  website: string
+  video: VideoContent
+  resources: ResourceItem[]
+  googleFormUrl?: string
+  primaryCTA: CTAButton
+  secondaryCTA?: CTAButton
+  contact: ContactDetails
+  brandColors: BrandColors
+}
+
 export interface DeluxeBoothProps {
   sponsor: DeluxeBoothData
+}
+
+export interface StandardBoothProps {
+  sponsor: StandardBoothData
 }

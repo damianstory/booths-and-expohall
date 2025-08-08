@@ -1,4 +1,5 @@
 {
+  "/green-energy-solutions/page": "app/green-energy-solutions/page.js",
   "/techcorp-innovations/page": "app/techcorp-innovations/page.js",
-  "/page": "app/page.js"
+  "/digital-marketing-hub/page": "app/digital-marketing-hub/page.js"
 }
