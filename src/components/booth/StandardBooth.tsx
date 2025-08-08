@@ -17,13 +17,10 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
       <nav className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="max-w-[1400px] mx-auto flex items-center text-sm">
           <a href="/expo" className="text-neutral-5 hover:text-primary-blue transition-colors">
-            Career Launch Expo
+            ⬅️  Back to Expo
           </a>
           <span className="mx-2 text-neutral-5">/</span>
           <span className="text-brand-navy font-medium">{sponsor.name}</span>
-          <span className="ml-4 px-3 py-1 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-semibold rounded-full">
-            {sponsor.tier === 'gold' ? 'Gold Booth' : 'Silver Booth'}
-          </span>
         </div>
       </nav>
 
@@ -40,7 +37,7 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
             <VideoSection video={sponsor.video} />
           </div>
 
-          <div className={`${bentoCardClass} p-0 col-span-12 lg:col-span-4 h-[450px]`}>
+          <div className={`${bentoCardClass} p-0 col-span-12 lg:col-span-4 h-[450px] border border-[#0092ff]`}>
             <GoogleFormEmbed formUrl={sponsor.googleFormUrl} />
           </div>
 
@@ -60,6 +57,23 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
           </div>
         </div>
       </div>
+      
+      <footer className="bg-white py-8 mt-12 border-t border-gray-200">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-600">
+            © 2025 myBlueprint Career Launch.{" "}
+            <a 
+              href="https://myblueprint.ca/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary-blue hover:underline"
+            >
+              myBlueprint
+            </a>
+            {" "}Special Projects.
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }

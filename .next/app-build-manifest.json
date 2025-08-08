@@ -6,20 +6,15 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/digital-marketing-hub/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/digital-marketing-hub/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/green-energy-solutions/page": [
+    "/silver-booth-template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/green-energy-solutions/page.js"
-    ],
-    "/techcorp-innovations/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/techcorp-innovations/page.js"
+      "static/chunks/app/silver-booth-template/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

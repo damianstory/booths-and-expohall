@@ -20,7 +20,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
 const CompanyStory: React.FC<CompanyStoryProps> = ({ 
   description, 
   quickFacts,
-  maxLength = 500 
+  maxLength = 800 
 }) => {
   const truncatedDescription = description.length > maxLength 
     ? `${description.slice(0, maxLength)}...` 

@@ -19,7 +19,7 @@ const DeluxeBooth: React.FC<DeluxeBoothProps> = ({ sponsor }) => {
       <nav className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="max-w-[1400px] mx-auto flex items-center text-sm">
           <a href="/expo" className="text-neutral-5 hover:text-primary-blue transition-colors">
-            Career Launch Expo
+            ⬅️  Back to Expo
           </a>
           <span className="mx-2 text-neutral-5">/</span>
           <span className="text-brand-navy font-medium">{sponsor.name}</span>
@@ -96,6 +96,23 @@ const DeluxeBooth: React.FC<DeluxeBoothProps> = ({ sponsor }) => {
           }
         }
       `}</style>
+      
+      <footer className="bg-white py-8 mt-12 border-t border-gray-200">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-600">
+            © 2025 myBlueprint Career Launch.{" "}
+            <a 
+              href="https://myblueprint.ca/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary-blue hover:underline"
+            >
+              myBlueprint
+            </a>
+            {" "}Special Projects.
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }

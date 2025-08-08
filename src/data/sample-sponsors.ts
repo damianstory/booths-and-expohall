@@ -1,13 +1,13 @@
 import { DeluxeBoothData, StandardBoothData } from '@/types/booth'
 
 export const sampleSponsor: DeluxeBoothData = {
-  id: 'techcorp-innovations',
-  name: 'Diamond Booth Template',
-  slug: 'techcorp-innovations',
+  id: 'deluxe-booth-template',
+  name: 'Deluxe Booth Template',
+  slug: 'deluxe-booth-template',
   tier: 'diamond',
   logo: '/logos/industry-immersion-series.svg',
   tagline: 'Premium Sponsor Experience',
-  description: 'TechCorp Innovations is a leading technology company specializing in AI, cloud computing, and sustainable tech solutions. For over 20 years, we\'ve been at the forefront of digital transformation, helping businesses and communities thrive in the digital age. Our mission is to create innovative solutions that make a positive impact on society while fostering the next generation of tech leaders through comprehensive internship programs and mentorship opportunities.',
+  description: 'Deluxe Booth Template is a leading technology company specializing in AI, cloud computing, and sustainable tech solutions. For over 20 years, we\'ve been at the forefront of digital transformation, helping businesses and communities thrive in the digital age. Our mission is to create innovative solutions that make a positive impact on society while fostering the next generation of tech leaders through comprehensive internship programs and mentorship opportunities.',
   website: 'https://example.com/techcorp',
   quickFacts: [
     {
@@ -139,13 +139,13 @@ export const sampleSponsor: DeluxeBoothData = {
 }
 
 export const goldSponsor: StandardBoothData = {
-  id: 'green-energy-solutions',
+  id: 'gold-booth-template',
   name: 'Gold Booth Template',
-  slug: 'green-energy-solutions',
+  slug: 'gold-booth-template',
   tier: 'gold',
   logo: '/logos/industry-immersion-series.svg',
   tagline: 'Enhanced Sponsor Experience',
-  description: 'Green Energy Solutions is a pioneering renewable energy company dedicated to developing innovative solar, wind, and energy storage solutions. We are passionate about creating a sustainable future while offering exciting career opportunities in clean technology. Join our team of engineers, data scientists, and sustainability experts as we work to transform the energy landscape and combat climate change through cutting-edge technology and sustainable practices.',
+  description: 'Gold Booth Template is a pioneering renewable energy company dedicated to developing innovative solar, wind, and energy storage solutions. We are passionate about creating a sustainable future while offering exciting career opportunities in clean technology. Join our team of engineers, data scientists, and sustainability experts as we work to transform the energy landscape and combat climate change through cutting-edge technology and sustainable practices.',
   website: 'https://example.com/greenenergy',
   video: {
     url: 'https://www.youtube.com/watch?v=87uU-eFE4_E',
@@ -219,13 +219,13 @@ export const goldSponsor: StandardBoothData = {
 }
 
 export const silverSponsor: StandardBoothData = {
-  id: 'digital-marketing-hub',
+  id: 'silver-booth-template',
   name: 'Silver Booth Template',
-  slug: 'digital-marketing-hub',
+  slug: 'silver-booth-template',
   tier: 'silver',
   logo: '/logos/industry-immersion-series.svg',
   tagline: 'Standard Sponsor Experience',
-  description: 'Digital Marketing Hub is a full-service digital marketing agency specializing in social media strategy, content creation, and data-driven marketing campaigns. We help brands tell their stories and connect with audiences in meaningful ways. Our team of creative professionals and marketing strategists is always looking for fresh talent to join our dynamic, fast-paced environment where innovation and creativity thrive.',
+  description: 'Silver Booth Template is a full-service digital marketing agency specializing in social media strategy, content creation, and data-driven marketing campaigns. We help brands tell their stories and connect with audiences in meaningful ways. Our team of creative professionals and marketing strategists is always looking for fresh talent to join our dynamic, fast-paced environment where innovation and creativity thrive.',
   website: 'https://example.com/digitalmarketinghub',
   video: {
     url: 'https://www.youtube.com/watch?v=87uU-eFE4_E',
