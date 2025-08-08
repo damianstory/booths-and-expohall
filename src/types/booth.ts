@@ -78,11 +78,33 @@ export interface EngagementActivityData {
 
 export type BoothTier = 'diamond' | 'gold' | 'silver'
 
+export type Industry = 
+  | 'Technology' 
+  | 'Healthcare' 
+  | 'Finance' 
+  | 'Engineering' 
+  | 'Education' 
+  | 'Manufacturing'
+  | 'Retail'
+  | 'Energy'
+  | 'Marketing'
+  | 'Consulting'
+
+export type Pathway = 
+  | 'direct-to-workplace'
+  | 'apprenticeship'
+  | 'college'
+  | 'university'
+  | 'gap-year'
+
 export interface DeluxeBoothData {
   id: string
   name: string
   slug: string
   tier: 'diamond'
+  industry: Industry
+  isPostSecondary: boolean
+  pathway: Pathway
   logo: string
   tagline: string
   description: string
@@ -103,6 +125,9 @@ export interface StandardBoothData {
   name: string
   slug: string
   tier: 'gold' | 'silver'
+  industry: Industry
+  isPostSecondary: boolean
+  pathway: Pathway
   logo: string
   tagline: string
   description: string

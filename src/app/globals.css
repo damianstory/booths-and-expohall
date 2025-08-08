@@ -51,4 +51,105 @@
       gap: var(--space-lg);
     }
   }
+
+  /* Booth Card Animations */
+  .booth-card-wrapper {
+    animation: fadeInUp 0.6s var(--ease-standard) both;
+  }
+
+  .booth-card {
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .booth-card {
+      transform: none !important;
+    }
+    
+    .booth-card-wrapper {
+      animation: none;
+    }
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Tilt effect helpers */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #667eea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-diamond {
+    box-shadow: 0 0 30px rgba(0, 146, 255, 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+  }
+
+  .glow-silver {
+    box-shadow: 0 0 20px rgba(156, 163, 175, 0.2);
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(229, 231, 235, 1) 0%,
+      rgba(243, 244, 246, 1) 50%,
+      rgba(229, 231, 235, 1) 100%
+    );
+    background-size: 2000px 100%;
+    animation: shimmer 2s infinite;
+  }
 }

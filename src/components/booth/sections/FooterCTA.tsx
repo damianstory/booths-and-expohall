@@ -52,7 +52,7 @@ const FooterCTA: React.FC<FooterCTAProps> = ({
 
       <div className="mt-12 pt-8 border-t border-gray-200">
         <a 
-          href="/expo"
+          href="/"
           className="inline-flex items-center gap-2 text-sm text-neutral-5 hover:text-primary-blue transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />

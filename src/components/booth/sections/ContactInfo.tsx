@@ -39,9 +39,9 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
 
   return (
     <div className="h-full flex flex-col">
-      <h3 className="text-lg font-bold text-brand-navy mb-2">Get in Touch</h3>
+      <h3 className="text-lg font-bold text-brand-navy mb-1">Get in Touch</h3>
       
-      <div className="flex-grow flex flex-col justify-end pb-2">
+      <div className="flex-grow flex flex-col justify-end pb-1">
         <div className="space-y-2">
           {contact.email && (
             <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
       </div>
 
       {contact.socialLinks && contact.socialLinks.length > 0 && (
-        <div className="pt-2 mt-auto border-t border-gray-100">
+        <div className="pt-2 mt-auto border-t border-gray-100 pb-2">
           <div className="flex gap-1">
             {contact.socialLinks.slice(0, 4).map((link, index) => (
               <a

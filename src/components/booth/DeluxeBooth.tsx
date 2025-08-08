@@ -18,7 +18,7 @@ const DeluxeBooth: React.FC<DeluxeBoothProps> = ({ sponsor }) => {
     <div className="min-h-screen bg-background-light">
       <nav className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="max-w-[1400px] mx-auto flex items-center text-sm">
-          <a href="/expo" className="text-neutral-5 hover:text-primary-blue transition-colors">
+          <a href="/" className="text-neutral-5 hover:text-primary-blue transition-colors">
             ⬅️  Back to Expo
           </a>
           <span className="mx-2 text-neutral-5">/</span>
