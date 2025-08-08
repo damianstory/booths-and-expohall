@@ -46,12 +46,12 @@ export default function FilterBar({
     <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
       {/* Post-Secondary Filter */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-600 mb-3">INSTITUTION TYPE</h3>
+        <h3 className="text-xs font-bold uppercase text-gray-600 mb-3">INSTITUTION TYPE</h3>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => onPostSecondaryChange('all')}
             className={`
-              px-4 py-2 rounded-full font-medium text-sm transition-all
+              px-4 py-2 rounded-full font-light text-sm transition-all
               ${showPostSecondary === 'all'
                 ? 'bg-primary-blue text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -63,7 +63,7 @@ export default function FilterBar({
           <button
             onClick={() => onPostSecondaryChange(false)}
             className={`
-              px-4 py-2 rounded-full font-medium text-sm transition-all flex items-center gap-2
+              px-4 py-2 rounded-full font-light text-sm transition-all flex items-center gap-2
               ${showPostSecondary === false
                 ? 'bg-primary-blue text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -76,7 +76,7 @@ export default function FilterBar({
           <button
             onClick={() => onPostSecondaryChange(true)}
             className={`
-              px-4 py-2 rounded-full font-medium text-sm transition-all flex items-center gap-2
+              px-4 py-2 rounded-full font-light text-sm transition-all flex items-center gap-2
               ${showPostSecondary === true
                 ? 'bg-primary-blue text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -91,12 +91,12 @@ export default function FilterBar({
 
       {/* Pathway Filters */}
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-600 mb-3">PATHWAY</h3>
+        <h3 className="text-xs font-bold uppercase text-gray-600 mb-3">PATHWAY</h3>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => onPathwayChange('all')}
             className={`
-              px-3 py-1.5 rounded-full text-sm font-medium transition-all
+              px-3 py-1.5 rounded-full text-sm font-light transition-all
               ${selectedPathway === 'all'
                 ? 'bg-primary-blue text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -110,7 +110,7 @@ export default function FilterBar({
               key={pathway.value}
               onClick={() => onPathwayChange(pathway.value)}
               className={`
-                px-3 py-1.5 rounded-full text-sm font-medium transition-all
+                px-3 py-1.5 rounded-full text-sm font-light transition-all
                 ${selectedPathway === pathway.value
                   ? 'bg-primary-blue text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -125,12 +125,12 @@ export default function FilterBar({
 
       {/* Industry Filters */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-600 mb-3">INDUSTRY</h3>
+        <h3 className="text-xs font-bold uppercase text-gray-600 mb-3">INDUSTRY</h3>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => onIndustryChange('all')}
             className={`
-              px-3 py-1.5 rounded-full text-sm font-medium transition-all
+              px-3 py-1.5 rounded-full text-sm font-light transition-all
               ${selectedIndustry === 'all'
                 ? 'bg-primary-blue text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -144,7 +144,7 @@ export default function FilterBar({
               key={industry}
               onClick={() => onIndustryChange(industry)}
               className={`
-                px-3 py-1.5 rounded-full text-sm font-medium transition-all
+                px-3 py-1.5 rounded-full text-sm font-light transition-all
                 ${selectedIndustry === industry
                   ? 'bg-primary-blue text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -183,7 +183,7 @@ export default function FilterBar({
                 onPathwayChange('all')
                 onPostSecondaryChange('all')
               }}
-              className="ml-auto text-primary-blue hover:text-blue-700 font-medium"
+              className="ml-auto text-primary-blue hover:text-blue-700 font-light"
             >
               Clear all
             </button>
