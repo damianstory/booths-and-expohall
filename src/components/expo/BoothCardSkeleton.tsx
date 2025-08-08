@@ -21,13 +21,13 @@ export default function BoothCardSkeleton({ tier = 'silver', index = 0 }: BoothC
       case 'gold':
         return {
           wrapper: 'col-span-2 md:col-span-2 lg:col-span-1',
-          height: 'h-[280px]',
+          height: 'h-[320px]',
           logoSize: 'w-20 h-20'
         }
       case 'silver':
         return {
           wrapper: 'col-span-2 md:col-span-1 lg:col-span-1',
-          height: 'h-[280px]',
+          height: 'h-[320px]',
           logoSize: 'w-20 h-20'
         }
     }

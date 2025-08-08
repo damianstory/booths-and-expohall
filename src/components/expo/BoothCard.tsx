@@ -70,7 +70,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
           className={`
             booth-card relative rounded-xl p-6 cursor-pointer flex flex-col
             ${styles.card} ${styles.glow}
-            ${sponsor.tier === 'diamond' ? 'h-[320px]' : sponsor.tier === 'gold' ? 'h-[280px]' : 'h-[280px]'}
+            h-[320px]
           `}
           whileHover={{ 
             scale: 1.02,
@@ -166,13 +166,10 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
               ease: [0.4, 0, 0.2, 1]
             }}
           >
-            <h3 className="text-xl font-black text-brand-navy line-clamp-2">
+            <h3 className="text-xl font-black text-brand-navy line-clamp-2 whitespace-pre-line">
               {sponsor.name}
             </h3>
-            <p className={`
-              text-base font-light text-neutral-5 flex-grow
-              ${sponsor.tier === 'diamond' ? 'line-clamp-3' : 'line-clamp-2'}
-            `}>
+            <p className="text-base font-light text-neutral-5 flex-grow line-clamp-2">
               {sponsor.tagline}
             </p>
 

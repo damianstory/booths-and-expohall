@@ -3,7 +3,7 @@ import { DeluxeBoothData, StandardBoothData, Pathway } from '@/types/booth'
 // Diamond Tier Sponsors (Deluxe Booths)
 export const techCorpSponsor: DeluxeBoothData = {
   id: 'deluxe-booth-template',
-  name: 'Deluxe Booth Template',
+  name: 'Deluxe Booth\nTemplate',
   slug: 'deluxe-booth-template',
   tier: 'diamond',
   industry: 'Technology',
@@ -144,7 +144,7 @@ export const techCorpSponsor: DeluxeBoothData = {
 
 export const healthPlusSponsor: DeluxeBoothData = {
   id: 'healthplus-medical',
-  name: 'HealthPlus Medical',
+  name: 'HealthPlus\nMedical',
   slug: 'healthplus-medical',
   tier: 'diamond',
   industry: 'Healthcare',
@@ -264,7 +264,7 @@ export const healthPlusSponsor: DeluxeBoothData = {
 
 export const globalFinanceSponsor: DeluxeBoothData = {
   id: 'global-finance-group',
-  name: 'Global Finance Group',
+  name: 'Global Finance\nGroup',
   slug: 'global-finance-group',
   tier: 'diamond',
   industry: 'Finance',
@@ -389,7 +389,7 @@ export const globalFinanceSponsor: DeluxeBoothData = {
 // Gold Tier Sponsors (Standard Booths)
 export const greenEnergySponsor: StandardBoothData = {
   id: 'gold-booth-template',
-  name: 'Gold Booth Template',
+  name: 'Gold Booth\nTemplate',
   slug: 'gold-booth-template',
   tier: 'gold',
   industry: 'Energy',
@@ -472,7 +472,7 @@ export const greenEnergySponsor: StandardBoothData = {
 
 export const nexusEngineeringSponsor: StandardBoothData = {
   id: 'nexus-engineering',
-  name: 'Nexus Engineering',
+  name: 'Nexus\nEngineering',
   slug: 'nexus-engineering',
   tier: 'gold',
   industry: 'Engineering',
@@ -555,7 +555,7 @@ export const nexusEngineeringSponsor: StandardBoothData = {
 
 export const strategyPlusSponsor: StandardBoothData = {
   id: 'strategy-plus-consulting',
-  name: 'Strategy Plus Consulting',
+  name: 'Strategy Plus\nConsulting',
   slug: 'strategy-plus-consulting',
   tier: 'gold',
   industry: 'Consulting',
@@ -639,7 +639,7 @@ export const strategyPlusSponsor: StandardBoothData = {
 // Silver Tier Sponsors
 export const digitalMarketingHubSponsor: StandardBoothData = {
   id: 'silver-booth-template',
-  name: 'Silver Booth Template',
+  name: 'Silver Booth\nTemplate',
   slug: 'silver-booth-template',
   tier: 'silver',
   industry: 'Marketing',
@@ -726,7 +726,7 @@ export const digitalMarketingHubSponsor: StandardBoothData = {
 
 export const eduTechInnovateSponsor: StandardBoothData = {
   id: 'edutech-innovate',
-  name: 'EduTech Innovate',
+  name: 'EduTech\nInnovate',
   slug: 'edutech-innovate',
   tier: 'silver',
   industry: 'Education',
@@ -798,7 +798,7 @@ export const eduTechInnovateSponsor: StandardBoothData = {
 
 export const retailPlusSponsor: StandardBoothData = {
   id: 'retail-plus',
-  name: 'Retail Plus',
+  name: 'Retail\nPlus',
   slug: 'retail-plus',
   tier: 'silver',
   industry: 'Retail',
@@ -870,7 +870,7 @@ export const retailPlusSponsor: StandardBoothData = {
 
 export const smartManufacturingSponsor: StandardBoothData = {
   id: 'smart-manufacturing-co',
-  name: 'Smart Manufacturing Co',
+  name: 'Smart Manufacturing\nCo',
   slug: 'smart-manufacturing-co',
   tier: 'silver',
   industry: 'Manufacturing',

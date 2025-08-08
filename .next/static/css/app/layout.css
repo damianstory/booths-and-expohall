@@ -1379,12 +1379,6 @@ video {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
 .block {
   display: block;
 }
@@ -1438,9 +1432,6 @@ video {
 }
 .h-9 {
   height: 2.25rem;
-}
-.h-\[280px\] {
-  height: 280px;
 }
 .h-\[320px\] {
   height: 320px;
@@ -1655,6 +1646,9 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.whitespace-pre-line {
+  white-space: pre-line;
 }
 .break-all {
   word-break: break-all;
