@@ -1,5 +1,6 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/digital-marketing-hub/page": "app/digital-marketing-hub/page.js",
   "/green-energy-solutions/page": "app/green-energy-solutions/page.js",
-  "/techcorp-innovations/page": "app/techcorp-innovations/page.js",
-  "/digital-marketing-hub/page": "app/digital-marketing-hub/page.js"
+  "/techcorp-innovations/page": "app/techcorp-innovations/page.js"
 }

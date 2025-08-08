@@ -44,17 +44,19 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
             <GoogleFormEmbed formUrl={sponsor.googleFormUrl} />
           </div>
 
-          {/* Bottom row: Resources (4 cols) + Company Story (4 cols) + Contact (4 cols) */}
+          {/* Bottom section: Resources (4 cols) + Story & Contact stacked (8 cols) */}
           <div className={`${bentoCardClass} p-6 col-span-12 md:col-span-6 lg:col-span-4 h-[320px]`}>
             <ResourceCards resources={sponsor.resources} maxDisplay={3} variant="list" />
           </div>
 
-          <div className={`${bentoCardClass} p-6 col-span-12 md:col-span-6 lg:col-span-4 h-[320px]`}>
-            <CompanyStory description={sponsor.description} maxLength={400} />
-          </div>
-
-          <div className={`${bentoCardClass} p-6 col-span-12 md:col-span-12 lg:col-span-4 h-[320px]`}>
-            <ContactInfo contact={sponsor.contact} website={sponsor.website} />
+          <div className={`${bentoCardClass} col-span-12 md:col-span-12 lg:col-span-8 h-[320px] flex flex-col`}>
+            <div className="p-6 flex-1">
+              <CompanyStory description={sponsor.description} maxLength={400} />
+            </div>
+            <div className="border-t border-gray-100"></div>
+            <div className="p-6 flex-1">
+              <ContactInfo contact={sponsor.contact} website={sponsor.website} />
+            </div>
           </div>
         </div>
       </div>
