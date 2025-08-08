@@ -1,0 +1,19 @@
+<svg width="768" height="768" viewBox="0 0 768 768" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Industry Immersion Series</title>
+  <desc id="desc">Placeholder vector logo for Industry Immersion Series with blue gradient text and a sparkle mark.</desc>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0092FF"/>
+      <stop offset="100%" stop-color="#1C5FAF"/>
+    </linearGradient>
+  </defs>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <g transform="translate(96, 200)">
+    <text x="0" y="120" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="120" font-weight="800" fill="url(#grad)">Industry</text>
+    <text x="0" y="260" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="120" font-weight="800" fill="#00B0FF">Immersion</text>
+    <text x="0" y="400" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="120" font-weight="800" fill="#0B3B73">Series</text>
+  </g>
+  <!-- sparkle mark -->
+  <path d="M624 232c12 44 32 64 76 76-44 12-64 32-76 76-12-44-32-64-76-76 44-12 64-32 76-76z" fill="#0092FF"/>
+</svg>
+
