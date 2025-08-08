@@ -48,7 +48,7 @@ export default function BoothCardSkeleton({ tier = 'silver', index = 0 }: BoothC
       }}
     >
       <div className={`
-        relative rounded-xl p-6 flex flex-col bg-white border-2 border-gray-200
+        relative rounded-xl p-6 flex flex-col bg-off-white border-2 border-neutral-2
         ${styles.height}
       `}>
         {/* Tier Badge Skeleton */}

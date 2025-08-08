@@ -64,10 +64,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               <AlertTriangle className="w-12 h-12 text-red-500" />
             </motion.div>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl font-semibold text-brand-navy mb-2">
               Something went wrong
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-neutral-4 mb-6">
               We encountered an error while loading the booths. Please try refreshing the page.
             </p>
 

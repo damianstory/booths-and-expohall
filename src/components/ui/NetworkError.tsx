@@ -95,10 +95,10 @@ export default function NetworkError({
         </motion.div>
 
         {/* Error Message */}
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        <h3 className="text-xl font-semibold text-brand-navy mb-2">
           {isOnline ? 'Connection Problem' : 'No Internet Connection'}
         </h3>
-        <p className="text-gray-600 mb-6">
+        <p className="text-neutral-4 mb-6">
           {isOnline 
             ? 'Unable to load booth data. Please check your connection and try again.'
             : 'Please check your internet connection and try again.'
@@ -107,8 +107,8 @@ export default function NetworkError({
 
         {/* Retry Information */}
         {retryCount > 0 && (
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-gray-600">
+          <div className="bg-neutral-1 border border-neutral-2 rounded-lg p-4 mb-6">
+            <p className="text-sm text-neutral-4">
               Retry attempt {retryCount} of {maxRetries}
             </p>
             {retryCount >= maxRetries && (
@@ -127,7 +127,7 @@ export default function NetworkError({
             className={`
               inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-medium
               ${isRetrying || (!isOnline && retryCount >= maxRetries)
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                ? 'bg-neutral-3 text-neutral-5 cursor-not-allowed'
                 : 'bg-primary-blue text-white hover:bg-blue-600'
               }
             `}
@@ -149,7 +149,7 @@ export default function NetworkError({
 
           <motion.button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+            className="px-6 py-3 border-2 border-neutral-3 text-neutral-5 rounded-lg hover:bg-neutral-1 transition-colors font-medium"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

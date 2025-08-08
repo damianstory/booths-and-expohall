@@ -48,8 +48,8 @@ const ResourceCards: React.FC<ResourceCardsProps> = ({
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-xl font-bold text-brand-navy">Resources</h3>
-        <span className="text-xs text-neutral-5 bg-gray-100 px-2 py-1 rounded-full">
+        <h3 className="text-body-1 font-black text-brand-navy">Resources</h3>
+        <span className="text-subtitle-1 text-neutral-5 bg-neutral-2 px-2 py-1 rounded-full">
           {resources.length} items
         </span>
       </div>
@@ -70,21 +70,21 @@ const ResourceCards: React.FC<ResourceCardsProps> = ({
               <button
                 key={index}
                 onClick={() => handleResourceClick(resource.url)}
-                className={`group text-left bg-white border border-gray-200 rounded-xl p-3 hover:border-primary-blue hover:shadow-md transition-all overflow-hidden ${spanClass}`}
+                className={`group text-left bg-off-white border border-neutral-2 rounded-xl p-3 hover:border-primary-blue hover:shadow-md hover:bg-light-blue/10 transition-all overflow-hidden ${spanClass}`}
               >
                 <div className="flex items-start gap-3">
                   <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${getIconColor(resource.type)}`}>
                     {getIcon(resource.type)}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="font-semibold text-sm text-brand-navy group-hover:text-primary-blue transition-colors truncate">
+                    <h4 className="text-compact font-medium text-brand-navy group-hover:text-primary-blue transition-colors truncate">
                       {resource.title}
                     </h4>
-                    <p className="text-xs text-neutral-5 mt-0.5 line-clamp-2">
+                    <p className="text-subtitle-1 font-light text-neutral-5 mt-0.5 line-clamp-2">
                       {resource.description}
                     </p>
                     {resource.fileSize && (
-                      <span className="text-[10px] text-neutral-5/70">
+                      <span className="text-subtitle-2 font-light text-neutral-5/70">
                         {resource.fileSize}
                       </span>
                     )}
@@ -109,7 +109,7 @@ const ResourceCards: React.FC<ResourceCardsProps> = ({
               onClick={() => handleResourceClick(resource.url)}
               className="w-full group block text-left"
             >
-              <div className="flex items-start gap-2.5 p-2.5 border border-gray-200 rounded-lg hover:border-primary-blue hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200">
+              <div className="flex items-start gap-2.5 p-2.5 border border-neutral-2 rounded-lg hover:border-primary-blue hover:shadow-md hover:bg-light-blue/10 transform hover:-translate-y-0.5 transition-all duration-200">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${getIconColor(resource.type)}`}>
                   {getIcon(resource.type)}
                 </div>

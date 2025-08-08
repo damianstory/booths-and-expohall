@@ -254,12 +254,12 @@ export default function ExpoHall() {
                 transition={{ duration: 0.4, delay: 0.2 }}
               >
                 {isFilterChanging ? (
-                  <div className="flex items-center justify-center gap-2 text-gray-600">
+                  <div className="flex items-center justify-center gap-2 text-neutral-4">
                     <LoadingSpinner size="sm" />
                     <span>Filtering booths...</span>
                   </div>
                 ) : (
-                  <p className="text-gray-600">
+                  <p className="text-neutral-4">
                     Showing <span className="font-semibold text-brand-navy">{filteredSponsors.length}</span> 
                     {' '}of {sponsors.length} booths
                   </p>
@@ -314,15 +314,15 @@ export default function ExpoHall() {
                   >
                     <div className="max-w-lg mx-auto">
                       <EmptyStateIllustration type="no-results" className="mb-6" />
-                      <h3 className="text-2xl font-semibold text-gray-800 mb-3">No booths match your filters</h3>
-                      <p className="text-gray-600 mb-8">
+                      <h3 className="text-2xl font-semibold text-brand-navy mb-3">No booths match your filters</h3>
+                      <p className="text-neutral-4 mb-8">
                         We couldn&apos;t find any organizations that match your current filter combination. 
                         Try adjusting your filters or explore some popular categories below.
                       </p>
 
                       {/* Popular Filter Suggestions */}
                       <div className="mb-8">
-                        <p className="text-sm font-medium text-gray-700 mb-4">Try these popular combinations:</p>
+                        <p className="text-sm font-medium text-neutral-5 mb-4">Try these popular combinations:</p>
                         <div className="flex flex-wrap justify-center gap-3">
                           {getPopularFilterSuggestions().map((suggestion, index) => (
                             <motion.button
@@ -374,7 +374,7 @@ export default function ExpoHall() {
         <div className="mt-20 bg-brand-navy text-white py-12">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h2 className="text-4xl font-black mb-4">Ready to Connect?</h2>
-            <p className="text-lg font-light text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg font-light text-neutral-3 mb-6 max-w-2xl mx-auto">
               Visit individual booths to learn more about each organization, watch videos, 
               download resources, and connect with recruiters.
             </p>

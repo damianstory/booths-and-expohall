@@ -32,7 +32,7 @@ export default function LoadingSpinner({
       case 'white':
         return 'border-white border-t-transparent'
       case 'gray':
-        return 'border-gray-300 border-t-transparent'
+        return 'border-neutral-3 border-t-transparent'
     }
   }
 

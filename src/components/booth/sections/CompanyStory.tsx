@@ -28,16 +28,16 @@ const CompanyStory: React.FC<CompanyStoryProps> = ({
 
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-lg font-bold text-brand-navy mb-2">Our Story</h2>
+      <h2 className="text-header-4 text-brand-navy mb-2">Our Story</h2>
       
       <div className="flex-grow">
-        <p className="text-neutral-5 leading-relaxed mb-4 text-xs">
+        <p className="text-compact font-light text-neutral-5 leading-relaxed mb-4">
           {truncatedDescription}
         </p>
 
         {quickFacts && quickFacts.length > 0 && (
-          <div className="space-y-3 pt-4 border-t border-gray-100">
-            <h3 className="text-sm font-semibold text-brand-navy uppercase tracking-wider mb-3">
+          <div className="space-y-3 pt-4 border-t border-neutral-1">
+            <h3 className="text-subtitle-2 font-bold text-brand-navy uppercase tracking-wider mb-3">
               Quick Facts
             </h3>
             {quickFacts.map((fact, index) => (
@@ -52,8 +52,8 @@ const CompanyStory: React.FC<CompanyStoryProps> = ({
                   )}
                 </div>
                 <div className="flex-grow min-w-0">
-                  <span className="text-xs text-neutral-5 block">{fact.label}</span>
-                  <span className="text-sm font-medium text-brand-navy truncate block">
+                  <span className="text-subtitle-2 font-bold text-neutral-4 block">{fact.label}</span>
+                  <span className="text-compact font-medium text-brand-navy truncate block">
                     {fact.value}
                   </span>
                 </div>

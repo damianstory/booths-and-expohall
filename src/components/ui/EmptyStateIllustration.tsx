@@ -191,7 +191,7 @@ export default function EmptyStateIllustration({
           }
         }}
       >
-        <Sparkles className="w-12 h-12 text-gray-400" />
+        <Sparkles className="w-12 h-12 text-neutral-3" />
       </motion.div>
     </motion.div>
   )

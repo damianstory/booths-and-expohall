@@ -46,15 +46,15 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
       case 'silver':
         return {
           wrapper: 'col-span-2 md:col-span-1 lg:col-span-1',
-          card: 'bg-white border-2 border-gray-200 hover:border-gray-400',
-          badge: 'bg-gradient-to-r from-gray-400 to-gray-600 text-white',
+          card: 'bg-off-white border-2 border-neutral-2 hover:border-neutral-3',
+          badge: 'bg-gradient-to-r from-neutral-4 to-neutral-5 text-white',
           glow: 'hover:shadow-lg',
         }
       default:
         return {
           wrapper: 'col-span-1',
-          card: 'bg-white border-2 border-gray-200',
-          badge: 'bg-gray-500 text-white',
+          card: 'bg-off-white border-2 border-neutral-2',
+          badge: 'bg-neutral-5 text-white',
           glow: '',
         }
     }
@@ -123,7 +123,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             }}
           >
             <div className={`
-              bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden relative
+              bg-neutral-2 rounded-lg flex items-center justify-center overflow-hidden relative
               ${sponsor.tier === 'diamond' ? 'w-24 h-24' : 'w-20 h-20'}
             `}>
               {/* Loading skeleton for image */}
@@ -144,7 +144,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
                 />
               ) : (
                 <motion.div 
-                  className="text-2xl font-bold text-gray-400"
+                  className="text-2xl font-bold text-neutral-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
@@ -166,17 +166,17 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
               ease: [0.4, 0, 0.2, 1]
             }}
           >
-            <h3 className="text-xl font-black text-brand-navy line-clamp-2 whitespace-pre-line">
+            <h3 className="text-body-1 font-black text-brand-navy line-clamp-2 whitespace-pre-line">
               {sponsor.name}
             </h3>
-            <p className="text-base font-light text-neutral-5 flex-grow line-clamp-2">
+            <p className="text-body-2 font-light text-neutral-5 flex-grow line-clamp-2">
               {sponsor.tagline}
             </p>
 
             {/* Industry Tag */}
             <div className="flex flex-wrap gap-2 mt-auto pt-2">
               <motion.span 
-                className="inline-block px-2 py-1 bg-primary-blue/10 text-primary-blue text-xs font-medium rounded-full"
+                className="inline-block px-2 py-1 bg-primary-blue/10 text-primary-blue text-subtitle-1 font-medium rounded-full"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 

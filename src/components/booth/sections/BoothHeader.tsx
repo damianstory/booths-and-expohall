@@ -27,10 +27,10 @@ const BoothHeader: React.FC<BoothHeaderProps> = ({ sponsor }) => {
         </div>
 
         <div className="flex-grow">
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-navy mb-2">
+          <h1 className="text-header-2 text-brand-navy mb-2">
             {sponsor.name}
           </h1>
-          <p className="text-lg text-neutral-5">
+          <p className="text-body-1 font-light text-neutral-5">
             {sponsor.tagline}
           </p>
         </div>
@@ -38,7 +38,7 @@ const BoothHeader: React.FC<BoothHeaderProps> = ({ sponsor }) => {
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
           <button
             onClick={() => handleCTAClick(sponsor.primaryCTA.url)}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-blue text-white font-semibold rounded-lg hover:bg-blue-600 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-blue text-white font-semibold rounded-lg hover:bg-brand-navy transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
           >
             {sponsor.primaryCTA.text}
             <ExternalLink className="w-4 h-4" />

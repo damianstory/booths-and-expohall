@@ -39,7 +39,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
 
   return (
     <div className="h-full flex flex-col">
-      <h3 className="text-lg font-bold text-brand-navy mb-1">Get in Touch</h3>
+      <h3 className="text-body-1 font-black text-brand-navy mb-1">Get in Touch</h3>
       
       <div className="flex-grow flex flex-col justify-end pb-1">
         <div className="space-y-2">
@@ -49,7 +49,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
               <div className="min-w-0 flex-1">
                 <a 
                   href={`mailto:${contact.email}`}
-                  className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors break-all"
+                  className="text-compact font-light text-brand-navy hover:text-primary-blue transition-colors break-all"
                 >
                   {contact.email}
                 </a>
@@ -63,7 +63,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
               <div>
                 <a 
                   href={`tel:${contact.phone}`}
-                  className="text-xs font-medium text-brand-navy hover:text-primary-blue transition-colors"
+                  className="text-compact font-light text-brand-navy hover:text-primary-blue transition-colors"
                 >
                   {contact.phone}
                 </a>
@@ -75,7 +75,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
             <div className="flex items-center gap-2">
               <MapPin className="w-3 h-3 text-primary-blue flex-shrink-0" />
               <div>
-                <p className="text-xs text-brand-navy">
+                <p className="text-compact font-light text-brand-navy">
                   {contact.headquarters.city}, {contact.headquarters.province}
                 </p>
               </div>
@@ -85,7 +85,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
       </div>
 
       {contact.socialLinks && contact.socialLinks.length > 0 && (
-        <div className="pt-2 mt-auto border-t border-gray-100 pb-2">
+        <div className="pt-2 mt-auto border-t border-neutral-1 pb-2">
           <div className="flex gap-1">
             {contact.socialLinks.slice(0, 4).map((link, index) => (
               <a
@@ -93,7 +93,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ contact, website }) => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-6 h-6 bg-gray-100 rounded flex items-center justify-center text-gray-600 hover:text-white transition-all duration-200 ${socialColors[link.platform]}`}
+                className={`w-6 h-6 bg-neutral-2 rounded flex items-center justify-center text-neutral-4 hover:text-white transition-all duration-200 ${socialColors[link.platform]}`}
                 title={link.platform}
               >
                 {socialIcons[link.platform]}
