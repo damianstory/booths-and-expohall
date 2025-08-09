@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features a deluxe booth template with a bento grid layout and modular components for different content sections.
+This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features two booth types (Deluxe and Standard) with tier-based styling (Diamond, Gold, Silver) and modular components for different content sections.
 
 ## Technology Stack
 
 - **Framework:** Next.js 15.4.6 with TypeScript
-- **Styling:** Tailwind CSS with custom design tokens
+- **Styling:** Tailwind CSS with custom design tokens and CSS variables
+- **Animation:** Framer Motion for micro-interactions and state transitions
 - **Icons:** Lucide React
 - **Deployment:** Vercel
 - **Content Management:** TypeScript interfaces with static data files
@@ -18,54 +19,90 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 
 ### URL Structure
 ```
-/expo                    # Main expo directory
-/company-name           # Individual booth pages (dynamic routing)
+/                       # Homepage (ExpoHall with sponsor cards)
+/deluxe-booth-template  # Diamond tier booth example
+/gold-booth-template    # Gold tier booth example  
+/silver-booth-template  # Silver tier booth example
+/test                   # Test page
 ```
 
-### Current Directory Structure
+### Directory Structure
 ```
 src/
 ├── app/
-│   ├── [sponsor]/             # Dynamic booth routes (e.g., /techcorp-innovations)
-│   │   └── page.tsx           # Individual booth page wrapper
-│   ├── globals.css            # Global styles with CSS variables
-│   ├── layout.tsx             # Root layout with Inter font
-│   └── page.tsx               # Homepage
+│   ├── deluxe-booth-template/  # Diamond tier booth demo
+│   ├── gold-booth-template/    # Gold tier booth demo
+│   ├── silver-booth-template/  # Silver tier booth demo
+│   ├── test/                   # Test page
+│   ├── globals.css             # Global styles with CSS variables
+│   ├── layout.tsx              # Root layout with Inter font
+│   └── page.tsx                # Homepage (ExpoHall)
 ├── components/
-│   └── booth/
-│       ├── DeluxeBooth.tsx    # Main deluxe booth component
-│       └── sections/          # Modular booth sections
-│           ├── BoothHeader.tsx
-│           ├── CompanyStory.tsx
-│           ├── ContactInfo.tsx
-│           ├── EngagementActivity.tsx
-│           ├── FooterCTA.tsx
-│           ├── ResourceCards.tsx
-│           ├── SessionSlides.tsx
-│           ├── SkillsGapQuiz.tsx
-│           └── VideoSection.tsx
+│   ├── booth/                  # Individual booth components
+│   │   ├── DeluxeBooth.tsx     # Diamond tier booth (full features)
+│   │   ├── StandardBooth.tsx   # Gold/Silver tier booth (simplified)
+│   │   └── sections/           # Modular booth sections
+│   │       ├── BoothHeader.tsx
+│   │       ├── CompanyStory.tsx
+│   │       ├── ContactInfo.tsx
+│   │       ├── EngagementActivity.tsx
+│   │       ├── FooterCTA.tsx
+│   │       ├── GoogleFormEmbed.tsx
+│   │       ├── ResourceCards.tsx
+│   │       ├── SessionSlides.tsx
+│   │       ├── SkillsGapQuiz.tsx
+│   │       └── VideoSection.tsx
+│   ├── expo/                   # Sponsor listing components
+│   │   ├── BoothCard.tsx       # Sponsor card with tier-specific styling
+│   │   ├── BoothCardSkeleton.tsx
+│   │   ├── ExpoHall.tsx        # Main sponsor listing page
+│   │   └── FilterBar.tsx       # Industry/pathway filtering
+│   └── ui/                     # Reusable UI components
+│       ├── EmptyStateIllustration.tsx
+│       ├── ErrorBoundary.tsx
+│       ├── LoadingSpinner.tsx
+│       └── NetworkError.tsx
 ├── data/
-│   └── sample-sponsors.ts     # Sample sponsor data
-├── types/
-│   └── booth.ts               # TypeScript interfaces for booth data
-└── styles/                    # Additional styles directory
+│   └── sample-sponsors.ts      # Static sponsor data (10 sponsors)
+└── types/
+    └── booth.ts                # TypeScript interfaces for booth data
 ```
 
 ## Architecture Overview
 
-The system uses a modular approach with booth sections as separate components. The main `DeluxeBooth.tsx` component orchestrates the layout using CSS Grid (bento grid) with responsive breakpoints.
+### Core Application Flow
+1. **Homepage (ExpoHall)** - Displays sponsor cards with filtering capabilities
+2. **Booth Pages** - Individual sponsor experiences (Deluxe vs Standard based on tier)
+3. **Data Layer** - Static sponsor data with TypeScript interfaces
 
-### Key Components
+### Two-Booth System
+- **DeluxeBooth** (Diamond Tier): Full-featured booth with bento grid, video, resources, interactive activities
+- **StandardBooth** (Gold/Silver Tiers): Simplified booth with basic sections and Google Form embed
 
-1. **DeluxeBooth.tsx** - Main booth container with 12-column bento grid layout
-2. **Booth Sections** - Modular components in `components/booth/sections/`:
-   - `VideoSection.tsx` - Multi-provider video embeds
-   - `EngagementActivity.tsx` - Interactive content embeds (quizzes, activities)
-   - `ResourceCards.tsx` - Downloadable resources with mosaic layout
-   - `SessionSlides.tsx` - Presentation embed section
-   - `CompanyStory.tsx` - Truncated company description
-   - `ContactInfo.tsx` - Contact details and social links
-   - `BoothHeader.tsx` - Logo, tagline, and primary branding
+### Tier-Based Styling System
+The `BoothCard` component uses a sophisticated tier-based styling system:
+- **Diamond**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span
+- **Gold**: Standard animations, gradient backgrounds, medium grid span  
+- **Silver**: Minimal effects, basic hover states, small grid span
+
+### Key Architectural Patterns
+
+#### Component Composition
+- Booth sections are standalone, reusable components that accept sponsor data
+- Each section handles its own loading states, error boundaries, and responsive behavior
+- Sections communicate with parent through props, not state lifting
+
+#### Animation Strategy
+- **Framer Motion** for complex state transitions and 3D transforms
+- **Pure CSS** for hover effects to avoid re-render performance issues
+- **Staggered animations** on component mount based on array index
+- **Hover optimization** using CSS `group` classes to prevent dual card refreshes
+
+#### Data Flow
+```
+sample-sponsors.ts → ExpoHall (filtering) → BoothCard (tier styling)
+sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
+```
 
 ## Design System
 
@@ -84,20 +121,33 @@ The system uses a modular approach with booth sections as separate components. T
 - **Bento Grid**: `.expo-bento-grid` class with 12-column CSS Grid
 - **Spacing**: CSS variables (--space-sm: 16px, --space-md: 24px, --space-lg: 32px)
 - **Responsive**: Mobile-first with tablet (768px+) and desktop (1024px+) breakpoints
+- **Grid Gaps**: Reduced horizontal gaps to prevent hover boundary issues (row gap ≠ column gap)
+
+### Animation System  
+- **Float animations**: Subtle 6-second floating with 2px movement for diamond cards
+- **Particle effects**: Individual floating dots with staggered animations
+- **Shimmer effects**: Horizontal sweep animation on hover
+- **Hover optimization**: Extended invisible hover areas to prevent dual card refresh
 
 ## Data Structure
 
-TypeScript interfaces defined in `src/types/booth.ts`:
+### Interface Hierarchy
+- **`DeluxeBoothData`** - Full-featured booth (Diamond tier) with all sections
+- **`StandardBoothData`** - Simplified booth (Gold/Silver tiers) with Google Form
+- **Shared interfaces**:
+  - `VideoContent` - Multi-provider video embed support
+  - `ResourceItem` - Downloadable resources with type detection
+  - `EngagementActivityData` - Interactive quizzes and activities
+  - `SessionSlidesData` - Google Slides presentation embed
+  - `ContactDetails` - Comprehensive contact information with social links
+  - `CTAButton` - Flexible call-to-action configuration
+  - `BrandColors` - Sponsor-specific color theming
 
-- **`DeluxeBoothData`** - Main booth interface with full feature set
-- **Supporting interfaces**:
-  - `VideoContent` - Video embed data (YouTube, Vimeo, Google Drive, custom)
-  - `ResourceItem` - Downloadable resources
-  - `EngagementActivityData` - Interactive content embeds
-  - `SessionSlidesData` - Presentation slides with metadata
-  - `ContactDetails` - Company contact info including headquarters and social links
-  - `CTAButton` - Call-to-action button configuration
-  - `BrandColors` - Sponsor brand color customization
+### Sample Data Structure
+- **3 Diamond tier sponsors**: TechCorp, HealthPlus, Global Finance
+- **3 Gold tier sponsors**: Green Energy, Nexus Engineering, Strategy Plus  
+- **4 Silver tier sponsors**: Digital Marketing Hub, EduTech, Retail Plus, Smart Manufacturing
+- Each sponsor includes industry classification, pathway mapping, and post-secondary flags for filtering
 
 ## Development Commands
 
@@ -115,13 +165,24 @@ npm run start
 npm run lint
 ```
 
-## Workflow Requirements
+## Development Patterns
 
-1. **Planning First:** Always write a plan to todo.md before implementation
-2. **Check-in:** Verify the plan before beginning work
-3. **Simple Changes:** Make minimal, focused changes that impact as little code as possible
-4. **Progress Updates:** Provide high-level explanations of changes made
-5. **Review:** Add summary to todo.md when tasks are complete
+### Component Enhancement Guidelines
+- When enhancing BoothCard styling, always test hover behavior to prevent dual refresh issues
+- Use pure CSS hover effects (`group-hover:`) over JavaScript state when possible
+- For animations, prefer CSS transforms over layout-changing properties
+- Test tier-specific styling across all three tiers (Diamond, Gold, Silver)
+
+### Animation Performance
+- Diamond cards use floating CSS animations that should remain subtle (≤2px movement)
+- Hover effects should only trigger on mouse enter, not on mouse exit
+- Use `group` classes for nested hover effects to maintain performance
+- Extended hover areas (invisible padding) prevent hover boundary issues
+
+### Data Management
+- All sponsor data lives in `sample-sponsors.ts` with typed interfaces
+- Booth routing uses static paths, not dynamic routing
+- Filter functionality in ExpoHall supports industry, pathway, and post-secondary criteria
 
 ## Performance Targets
 

@@ -31,24 +31,35 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
     switch (sponsor.tier) {
       case 'diamond':
         return {
-          wrapper: 'col-span-2 md:col-span-2 lg:col-span-2',
-          card: 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-2 border-transparent hover:border-primary-blue',
-          badge: 'bg-gradient-to-r from-primary-blue to-indigo-600 text-white',
-          glow: 'hover:shadow-2xl hover:shadow-primary-blue/20',
+          wrapper: 'col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-3',
+          card: `
+            bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-50 
+            border-2 border-transparent hover:border-blue-500
+            relative overflow-hidden
+            before:absolute before:inset-0 
+            before:bg-gradient-to-r before:from-blue-600/20 before:via-cyan-600/20 before:to-blue-600/20
+            before:opacity-0 hover:before:opacity-100 before:transition-opacity
+          `,
+          badge: 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white animate-pulse',
+          glow: 'hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02]',
+          animation: 'animate-float',
+          priority: 1
         }
       case 'gold':
         return {
           wrapper: 'col-span-2 md:col-span-2 lg:col-span-1',
-          card: 'bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-transparent hover:border-amber-500',
+          card: 'bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-transparent hover:border-amber-400',
           badge: 'bg-gradient-to-r from-amber-500 to-yellow-600 text-white',
-          glow: 'hover:shadow-xl hover:shadow-amber-500/20',
+          glow: 'hover:shadow-xl hover:shadow-amber-400/20',
+          priority: 2
         }
       case 'silver':
         return {
           wrapper: 'col-span-2 md:col-span-1 lg:col-span-1',
-          card: 'bg-off-white border-2 border-neutral-2 hover:border-neutral-3',
-          badge: 'bg-gradient-to-r from-neutral-4 to-neutral-5 text-white',
+          card: 'bg-white border-2 border-gray-200 hover:border-gray-300',
+          badge: 'bg-gradient-to-r from-gray-400 to-gray-500 text-white',
           glow: 'hover:shadow-lg',
+          priority: 3
         }
       default:
         return {
@@ -62,16 +73,40 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
 
   const styles = getTierStyles()
 
+  // Enhanced wrapper component for diamond cards only
+  const DiamondCardEnhancements = ({ children, tier }: { children: React.ReactNode, tier: string }) => {
+    if (tier === 'diamond') {
+      return (
+        <div className="relative group">
+          {/* Animated background particles for diamond - only CSS hover, no JS state */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400 rounded-full animate-particle-float-1"></div>
+            <div className="absolute top-8 right-6 w-1 h-1 bg-cyan-400 rounded-full animate-particle-float-2"></div>
+            <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-blue-500 rounded-full animate-particle-float-3"></div>
+          </div>
+          
+          {/* Shimmer effect on hover - only CSS hover, no JS state */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 shimmer-effect group-hover:animate-shimmer"></div>
+          
+          {children}
+        </div>
+      )
+    }
+    return <>{children}</>
+  }
+
   return (
-    <div className={`${styles.wrapper} booth-card-wrapper`}>
-      <Link href={`/${sponsor.slug}`}>
-        <motion.div
-          ref={cardRef}
-          className={`
-            booth-card relative rounded-xl p-6 cursor-pointer flex flex-col
-            ${styles.card} ${styles.glow}
-            h-[320px]
-          `}
+    <DiamondCardEnhancements tier={sponsor.tier}>
+      <div className={`${styles.wrapper} booth-card-wrapper`}>
+        <Link href={`/${sponsor.slug}`}>
+          <motion.div
+            ref={cardRef}
+            className={`
+              booth-card group relative rounded-xl p-6 cursor-pointer flex flex-col
+              ${styles.card} ${styles.glow}
+              ${sponsor.tier === 'diamond' ? 'animate-float' : ''}
+              h-[320px]
+            `}
           whileHover={{ 
             scale: 1.02,
             rotateY: sponsor.tier === 'diamond' ? 2 : 1,
@@ -86,7 +121,6 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             transition: { duration: 0.1 }
           }}
           onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
           style={{
             transformStyle: 'preserve-3d',
             perspective: 1000,
@@ -190,47 +224,23 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             </div>
           </motion.div>
 
-          {/* Hover CTA */}
-          <motion.div 
-            className="absolute bottom-4 left-4 right-4"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ 
-              opacity: isHovered ? 1 : 0, 
-              y: isHovered ? 0 : 10 
-            }}
-            transition={{ 
-              duration: 0.2,
-              ease: [0.4, 0, 0.2, 1]
-            }}
-          >
+          {/* Hover CTA - Pure CSS hover */}
+          <div className="absolute bottom-4 left-4 right-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
             <div className="bg-primary-blue text-white text-center py-2 px-4 rounded-lg font-medium text-sm shadow-lg">
               Visit Booth →
             </div>
-          </motion.div>
+          </div>
 
-          {/* Decorative Elements for Diamond Tier */}
+          {/* Decorative Elements for Diamond Tier - Pure CSS hover */}
           {sponsor.tier === 'diamond' && (
             <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none overflow-hidden">
-              <motion.div 
-                className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-primary-blue/10 to-purple-500/10 rounded-full blur-3xl"
-                animate={{
-                  scale: isHovered ? 1.1 : 1,
-                  opacity: isHovered ? 0.8 : 0.6,
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div 
-                className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 rounded-full blur-3xl"
-                animate={{
-                  scale: isHovered ? 1.2 : 1,
-                  opacity: isHovered ? 0.7 : 0.5,
-                }}
-                transition={{ duration: 0.4 }}
-              />
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-primary-blue/10 to-purple-500/10 rounded-full blur-3xl opacity-60 scale-100 group-hover:opacity-80 group-hover:scale-110 transition-all duration-300"></div>
+              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 rounded-full blur-3xl opacity-50 scale-100 group-hover:opacity-70 group-hover:scale-120 transition-all duration-400"></div>
             </div>
           )}
         </motion.div>
       </Link>
     </div>
+    </DiamondCardEnhancements>
   )
 }

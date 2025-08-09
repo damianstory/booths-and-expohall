@@ -71,7 +71,7 @@
   .expo-bento-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: var(--space-lg);
+    gap: var(--space-md) var(--space-sm); /* reduced horizontal gap */
     width: 100%;
   }
   
@@ -79,7 +79,7 @@
   @media (max-width: 767px) {
     .expo-bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      gap: var(--space-sm);
+      gap: var(--space-sm) 8px; /* even smaller horizontal gap on mobile */
     }
   }
   
@@ -87,20 +87,23 @@
   @media (min-width: 768px) and (max-width: 1023px) {
     .expo-bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      gap: var(--space-md);
+      gap: var(--space-md) var(--space-sm); /* reduced horizontal gap on tablet */
     }
   }
   
   /* Desktop - Add height optimizations */
   @media (min-width: 1024px) {
     .expo-bento-grid {
-      gap: var(--space-lg);
+      gap: var(--space-lg) var(--space-md); /* reduced horizontal gap on desktop */
     }
   }
 
   /* Booth Card Animations */
   .booth-card-wrapper {
     animation: fadeInUp 0.6s var(--ease-standard) both;
+    /* Extend hover area to prevent dual card refresh */
+    margin: -2px;
+    padding: 2px;
   }
 
   .booth-card {
@@ -152,6 +155,51 @@
     }
   }
 
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+    }
+    33% { 
+      transform: translateY(-2px) rotate(0.5deg); 
+    }
+    66% { 
+      transform: translateY(2px) rotate(-0.5deg); 
+    }
+  }
+
+  @keyframes particle-float-1 {
+    0%, 100% { 
+      transform: translateY(0px) scale(1);
+      opacity: 0.6;
+    }
+    50% { 
+      transform: translateY(-3px) scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes particle-float-2 {
+    0%, 100% { 
+      transform: translateY(0px) scale(1);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateY(-2px) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes particle-float-3 {
+    0%, 100% { 
+      transform: translateY(0px) scale(1);
+      opacity: 0.5;
+    }
+    50% { 
+      transform: translateY(-4px) scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
   /* Tilt effect helpers */
   .preserve-3d {
     transform-style: preserve-3d;
@@ -197,5 +245,36 @@
     );
     background-size: 2000px 100%;
     animation: shimmer 2s infinite;
+  }
+
+  /* Enhanced shimmer effects for diamond tier */
+  .shimmer-effect {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-particle-float-1 {
+    animation: particle-float-1 4s ease-in-out infinite;
+  }
+
+  .animate-particle-float-2 {
+    animation: particle-float-2 5s ease-in-out infinite;
+  }
+
+  .animate-particle-float-3 {
+    animation: particle-float-3 3.5s ease-in-out infinite;
   }
 }

@@ -56,6 +56,15 @@ export default function ExpoHall() {
     return filtered
   }, [selectedIndustry, selectedPathway, showPostSecondary])
 
+  // Group filtered sponsors by tier
+  const sponsorsByTier = useMemo(() => {
+    const diamond = filteredSponsors.filter(s => s.tier === 'diamond')
+    const gold = filteredSponsors.filter(s => s.tier === 'gold')
+    const silver = filteredSponsors.filter(s => s.tier === 'silver')
+    
+    return { diamond, gold, silver }
+  }, [filteredSponsors])
+
   // Count statistics
   const stats = useMemo(() => {
     return {
@@ -177,9 +186,7 @@ export default function ExpoHall() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
               >
-                <Sparkles className="w-8 h-8" />
                 <h1 className="text-6xl font-black">myBlueprint Career Launch Expo</h1>
-                <Sparkles className="w-8 h-8" />
               </motion.div>
               <motion.p 
                 className="text-xl font-medium opacity-90 mb-8"
@@ -281,28 +288,123 @@ export default function ExpoHall() {
                 ) : filteredSponsors.length > 0 ? (
                   <motion.div 
                     key="results"
-                    className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+                    className="space-y-12"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {filteredSponsors.map((sponsor, index) => (
-                      <motion.div
-                        key={sponsor.id}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ 
-                          duration: 0.5,
-                          delay: index * 0.05,
-                          ease: [0.4, 0, 0.2, 1]
-                        }}
-                      >
-                        <BoothCard 
-                          sponsor={sponsor} 
-                          index={index}
-                        />
-                      </motion.div>
-                    ))}
+                    {/* Premier Partners Section (Diamond) */}
+                    {sponsorsByTier.diamond.length > 0 && (
+                      <div>
+                        <motion.div 
+                          className="mb-8"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                        >
+                          <div className="bg-gradient-to-r from-purple-900 to-indigo-900 text-white rounded-xl p-6 shadow-xl">
+                            <h2 className="text-3xl font-black mb-2 flex items-center gap-3">
+                              <Sparkles className="w-8 h-8" />
+                              Diamond Partners
+                            </h2>
+                            <p className="text-lg font-light opacity-90">
+                              Leading innovation in their industries
+                            </p>
+                          </div>
+                        </motion.div>
+                        <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                          {sponsorsByTier.diamond.map((sponsor, index) => (
+                            <motion.div
+                              key={sponsor.id}
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ 
+                                duration: 0.5,
+                                delay: index * 0.05,
+                                ease: [0.4, 0, 0.2, 1]
+                              }}
+                            >
+                              <BoothCard 
+                                sponsor={sponsor} 
+                                index={index}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Gold Sponsors Section */}
+                    {sponsorsByTier.gold.length > 0 && (
+                      <div>
+                        <motion.div 
+                          className="mb-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+                        >
+                          <h2 className="text-2xl font-bold text-amber-600 mb-2">
+                            Gold Sponsors
+                          </h2>
+                          <div className="h-1 w-20 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full"></div>
+                        </motion.div>
+                        <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                          {sponsorsByTier.gold.map((sponsor, index) => (
+                            <motion.div
+                              key={sponsor.id}
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ 
+                                duration: 0.5,
+                                delay: (sponsorsByTier.diamond.length + index) * 0.05,
+                                ease: [0.4, 0, 0.2, 1]
+                              }}
+                            >
+                              <BoothCard 
+                                sponsor={sponsor} 
+                                index={sponsorsByTier.diamond.length + index}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Silver Sponsors Section */}
+                    {sponsorsByTier.silver.length > 0 && (
+                      <div>
+                        <motion.div 
+                          className="mb-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                        >
+                          <h2 className="text-xl font-semibold text-gray-600 mb-2">
+                            Silver Sponsors
+                          </h2>
+                          <div className="h-0.5 w-16 bg-gray-400 rounded-full"></div>
+                        </motion.div>
+                        <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                          {sponsorsByTier.silver.map((sponsor, index) => (
+                            <motion.div
+                              key={sponsor.id}
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ 
+                                duration: 0.5,
+                                delay: (sponsorsByTier.diamond.length + sponsorsByTier.gold.length + index) * 0.05,
+                                ease: [0.4, 0, 0.2, 1]
+                              }}
+                            >
+                              <BoothCard 
+                                sponsor={sponsor} 
+                                index={sponsorsByTier.diamond.length + sponsorsByTier.gold.length + index}
+                              />
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 ) : (
                   <motion.div 
