@@ -47,11 +47,11 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
           </div>
 
           <div className={`${bentoCardClass} col-span-12 md:col-span-12 lg:col-span-8 h-[320px] flex flex-col`}>
-            <div className="p-6 flex-1">
+            <div className="px-6 pt-6 pb-1" style={{height: '200px'}}>
               <CompanyStory description={sponsor.description} maxLength={400} />
             </div>
             <div className="border-t border-gray-100"></div>
-            <div className="p-6 flex-1">
+            <div className="px-6 pt-2 pb-4 flex-1">
               <ContactInfo contact={sponsor.contact} website={sponsor.website} />
             </div>
           </div>

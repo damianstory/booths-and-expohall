@@ -161,7 +161,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
           >
             <div className={`
               bg-neutral-2 rounded-lg flex items-center justify-center overflow-hidden relative
-              ${sponsor.tier === 'diamond' ? 'w-24 h-24' : 'w-20 h-20'}
+              w-20 h-20
             `}>
               {/* Loading skeleton for image */}
               {isImageLoading && sponsor.logo && (

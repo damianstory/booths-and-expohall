@@ -28,7 +28,7 @@ const CompanyStory: React.FC<CompanyStoryProps> = ({
 
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-header-4 text-brand-navy mb-2">Our Story</h2>
+      <h2 className="text-header-4 text-brand-navy mb-2">About Us</h2>
       
       <div className="flex-grow">
         <p className="text-compact font-light text-neutral-5 leading-relaxed mb-4">
