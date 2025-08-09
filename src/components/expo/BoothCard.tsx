@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { Gift } from 'lucide-react'
 import { DeluxeBoothData, StandardBoothData } from '@/types/booth'
 
 interface BoothCardProps {
@@ -40,7 +41,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             before:bg-gradient-to-r before:from-blue-600/20 before:via-cyan-600/20 before:to-blue-600/20
             before:opacity-0 hover:before:opacity-100 before:transition-opacity
           `,
-          badge: 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white animate-pulse',
+          trophy: 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-yellow-900 animate-pulse shadow-lg shadow-yellow-400/50',
           glow: 'hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02]',
           animation: 'animate-float',
           priority: 1
@@ -49,7 +50,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
         return {
           wrapper: 'col-span-2 md:col-span-2 lg:col-span-1',
           card: 'bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-transparent hover:border-amber-400',
-          badge: 'bg-gradient-to-r from-amber-500 to-yellow-600 text-white',
+          trophy: 'bg-gradient-to-r from-amber-500 to-yellow-600 text-yellow-100',
           glow: 'hover:shadow-xl hover:shadow-amber-400/20',
           priority: 2
         }
@@ -57,7 +58,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
         return {
           wrapper: 'col-span-2 md:col-span-1 lg:col-span-1',
           card: 'bg-white border-2 border-gray-200 hover:border-gray-300',
-          badge: 'bg-gradient-to-r from-gray-400 to-gray-500 text-white',
+          trophy: 'bg-gradient-to-r from-gray-400 to-gray-500 text-gray-100',
           glow: 'hover:shadow-lg',
           priority: 3
         }
@@ -65,7 +66,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
         return {
           wrapper: 'col-span-1',
           card: 'bg-off-white border-2 border-neutral-2',
-          badge: 'bg-neutral-5 text-white',
+          trophy: 'bg-neutral-5 text-white',
           glow: '',
         }
     }
@@ -126,24 +127,26 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             perspective: 1000,
           }}
         >
-          {/* Tier Badge */}
-          <motion.div 
-            className="absolute top-4 right-4 z-10"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ 
-              delay: index * 0.05 + 0.2,
-              duration: 0.5,
-              ease: [0.4, 0, 0.2, 1]
-            }}
-          >
-            <span className={`
-              inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase
-              ${styles.badge}
-            `}>
-              {sponsor.tier}
-            </span>
-          </motion.div>
+          {/* Prize Gift Icon */}
+          {sponsor.isPrize && (
+            <motion.div 
+              className="absolute top-4 right-4 z-10"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ 
+                delay: index * 0.05 + 0.2,
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+            >
+              <div className={`
+                inline-flex items-center justify-center w-8 h-8 rounded-full
+                ${styles.trophy}
+              `}>
+                <Gift size={18} />
+              </div>
+            </motion.div>
+          )}
 
           {/* Logo */}
           <motion.div 

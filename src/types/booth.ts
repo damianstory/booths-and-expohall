@@ -105,6 +105,7 @@ export interface DeluxeBoothData {
   industry: Industry
   isPostSecondary: boolean
   pathway: Pathway
+  isPrize: boolean
   logo: string
   tagline: string
   description: string
@@ -128,6 +129,7 @@ export interface StandardBoothData {
   industry: Industry
   isPostSecondary: boolean
   pathway: Pathway
+  isPrize: boolean
   logo: string
   tagline: string
   description: string
