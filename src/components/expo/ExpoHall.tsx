@@ -576,7 +576,7 @@ export default function ExpoHall() {
         {/* Footer Section */}
         <div className="mt-20 bg-brand-navy text-white py-12">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-black mb-4">Ready to Connect?</h2>
+            <h2 className="text-4xl font-black mb-4">Start Exploring</h2>
             <p className="text-lg font-light text-neutral-3 mb-6 max-w-2xl mx-auto">
               Visit individual booths to learn more about each organization, watch videos, 
               download resources, and connect with recruiters.
@@ -601,6 +601,24 @@ export default function ExpoHall() {
             </div>
           </div>
         </div>
+
+        {/* Copyright Footer */}
+        <footer className="bg-white py-8 border-t border-gray-200">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-gray-600">
+              © 2025 myBlueprint Career Launch.{" "}
+              <a 
+                href="https://myblueprint.ca/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-blue hover:underline"
+              >
+                myBlueprint
+              </a>
+              {" "}Special Projects.
+            </p>
+          </div>
+        </footer>
       </div>
     </ErrorBoundary>
   )

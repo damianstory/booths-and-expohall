@@ -1637,6 +1637,9 @@ video {
 .w-full {
   width: 100%;
 }
+.w-auto {
+  width: auto;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -3258,6 +3261,10 @@ video {
 
   .md\:h-20 {
     height: 5rem;
+  }
+
+  .md\:h-10 {
+    height: 2.5rem;
   }
 
   .md\:grid-cols-3 {
