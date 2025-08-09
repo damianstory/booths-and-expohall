@@ -1,3 +1,4 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/deluxe-booth-template/page": "app/deluxe-booth-template/page.js"
 }

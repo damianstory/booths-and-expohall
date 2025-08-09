@@ -11,21 +11,23 @@ import ErrorBoundary from '@/components/ui/ErrorBoundary'
 import NetworkError from '@/components/ui/NetworkError'
 import EmptyStateIllustration from '@/components/ui/EmptyStateIllustration'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
-import { Sparkles, TrendingUp, Users, Building } from 'lucide-react'
+import { Sparkles, TrendingUp, Users, Building, Gift } from 'lucide-react'
 
 type LoadingState = 'initial' | 'loading' | 'success' | 'error'
 
 export default function ExpoHall() {
-  const [selectedIndustry, setSelectedIndustry] = useState<Industry | 'all'>('all')
-  const [selectedPathway, setSelectedPathway] = useState<Pathway | 'all'>('all')
+  const [selectedIndustries, setSelectedIndustries] = useState<Industry[]>([])
+  const [selectedPathways, setSelectedPathways] = useState<Pathway[]>([])
   const [showPostSecondary, setShowPostSecondary] = useState<boolean | 'all'>('all')
+  const [showPrizesOnly, setShowPrizesOnly] = useState(false)
   const [loadingState, setLoadingState] = useState<LoadingState>('initial')
   const [isFilterChanging, setIsFilterChanging] = useState(false)
   const [retryCount, setRetryCount] = useState(0)
   const [previousFilters, setPreviousFilters] = useState({
-    industry: 'all' as Industry | 'all',
-    pathway: 'all' as Pathway | 'all',
-    postSecondary: 'all' as boolean | 'all'
+    industries: [] as Industry[],
+    pathways: [] as Pathway[],
+    postSecondary: 'all' as boolean | 'all',
+    prizesOnly: false
   })
 
   // Filter sponsors based on selected criteria
@@ -37,14 +39,19 @@ export default function ExpoHall() {
       filtered = filtered.filter(sponsor => sponsor.isPostSecondary === showPostSecondary)
     }
 
-    // Filter by pathway
-    if (selectedPathway !== 'all') {
-      filtered = filtered.filter(sponsor => sponsor.pathway === selectedPathway)
+    // Filter by pathways
+    if (selectedPathways.length > 0) {
+      filtered = filtered.filter(sponsor => selectedPathways.includes(sponsor.pathway))
     }
 
-    // Filter by industry
-    if (selectedIndustry !== 'all') {
-      filtered = filtered.filter(sponsor => sponsor.industry === selectedIndustry)
+    // Filter by industries
+    if (selectedIndustries.length > 0) {
+      filtered = filtered.filter(sponsor => selectedIndustries.includes(sponsor.industry))
+    }
+
+    // Filter by prizes
+    if (showPrizesOnly) {
+      filtered = filtered.filter(sponsor => sponsor.isPrize)
     }
 
     // Sort by tier priority: diamond > gold > silver
@@ -54,7 +61,7 @@ export default function ExpoHall() {
     })
 
     return filtered
-  }, [selectedIndustry, selectedPathway, showPostSecondary])
+  }, [selectedIndustries, selectedPathways, showPostSecondary, showPrizesOnly])
 
   // Group filtered sponsors by tier
   const sponsorsByTier = useMemo(() => {
@@ -89,24 +96,28 @@ export default function ExpoHall() {
 
   useEffect(() => {
     // Handle filter changes with loading animation
+    const arraysEqual = (a: any[], b: any[]) => a.length === b.length && a.every(item => b.includes(item))
+    
     const hasFiltersChanged = (
-      previousFilters.industry !== selectedIndustry ||
-      previousFilters.pathway !== selectedPathway ||
-      previousFilters.postSecondary !== showPostSecondary
+      !arraysEqual(previousFilters.industries, selectedIndustries) ||
+      !arraysEqual(previousFilters.pathways, selectedPathways) ||
+      previousFilters.postSecondary !== showPostSecondary ||
+      previousFilters.prizesOnly !== showPrizesOnly
     )
 
     if (hasFiltersChanged && loadingState === 'success') {
       setIsFilterChanging(true)
       setTimeout(() => {
         setPreviousFilters({
-          industry: selectedIndustry,
-          pathway: selectedPathway,
-          postSecondary: showPostSecondary
+          industries: [...selectedIndustries],
+          pathways: [...selectedPathways],
+          postSecondary: showPostSecondary,
+          prizesOnly: showPrizesOnly
         })
         setIsFilterChanging(false)
       }, 400) // Short delay for smooth transition
     }
-  }, [selectedIndustry, selectedPathway, showPostSecondary, previousFilters, loadingState])
+  }, [selectedIndustries, selectedPathways, showPostSecondary, showPrizesOnly, previousFilters, loadingState])
 
   const handleRetry = () => {
     setRetryCount(prev => prev + 1)
@@ -118,46 +129,49 @@ export default function ExpoHall() {
     }, 1000)
   }
 
-  const handleFilterChange = (type: 'industry' | 'pathway' | 'postSecondary', value: any) => {
+  const handleFilterChange = (type: 'industries' | 'pathways' | 'postSecondary' | 'prizesOnly', value: any) => {
     switch (type) {
-      case 'industry':
-        setSelectedIndustry(value)
+      case 'industries':
+        setSelectedIndustries(value)
         break
-      case 'pathway':
-        setSelectedPathway(value)
+      case 'pathways':
+        setSelectedPathways(value)
         break
       case 'postSecondary':
         setShowPostSecondary(value)
+        break
+      case 'prizesOnly':
+        setShowPrizesOnly(value)
         break
     }
   }
 
   const clearAllFilters = () => {
-    setSelectedIndustry('all')
-    setSelectedPathway('all')
+    setSelectedIndustries([])
+    setSelectedPathways([])
     setShowPostSecondary('all')
+    setShowPrizesOnly(false)
   }
 
   const getPopularFilterSuggestions = () => [
     { 
       label: 'Technology Companies', 
       action: () => {
-        setSelectedIndustry('Technology')
+        setSelectedIndustries(['Technology'])
         setShowPostSecondary(false)
       }
     },
     { 
       label: 'University Programs', 
       action: () => {
-        setSelectedPathway('university')
+        setSelectedPathways(['university'])
         setShowPostSecondary(true)
       }
     },
     { 
-      label: 'Healthcare Careers', 
+      label: 'Booths with Prizes', 
       action: () => {
-        setSelectedIndustry('Healthcare')
-        setShowPostSecondary('all')
+        setShowPrizesOnly(true)
       }
     }
   ]
@@ -244,12 +258,14 @@ export default function ExpoHall() {
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
               >
                 <FilterBar
-                  selectedIndustry={selectedIndustry}
-                  selectedPathway={selectedPathway}
+                  selectedIndustries={selectedIndustries}
+                  selectedPathways={selectedPathways}
                   showPostSecondary={showPostSecondary}
-                  onIndustryChange={(value) => handleFilterChange('industry', value)}
-                  onPathwayChange={(value) => handleFilterChange('pathway', value)}
+                  showPrizesOnly={showPrizesOnly}
+                  onIndustriesChange={(value) => handleFilterChange('industries', value)}
+                  onPathwaysChange={(value) => handleFilterChange('pathways', value)}
                   onPostSecondaryChange={(value) => handleFilterChange('postSecondary', value)}
+                  onPrizesOnlyChange={(value) => handleFilterChange('prizesOnly', value)}
                 />
               </motion.div>
 
@@ -297,20 +313,15 @@ export default function ExpoHall() {
                     {sponsorsByTier.diamond.length > 0 && (
                       <div>
                         <motion.div 
-                          className="mb-8"
+                          className="mb-6"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                         >
-                          <div className="bg-gradient-to-r from-purple-900 to-indigo-900 text-white rounded-xl p-6 shadow-xl">
-                            <h2 className="text-3xl font-black mb-2 flex items-center gap-3">
-                              <Sparkles className="w-8 h-8" />
-                              Diamond Partners
-                            </h2>
-                            <p className="text-lg font-light opacity-90">
-                              Leading innovation in their industries
-                            </p>
-                          </div>
+                          <h2 className="text-3xl font-bold animated-gradient-text mb-2">
+                            Platinum Sponsors
+                          </h2>
+                          <div className="h-1.5 w-24 bg-[#0092FF] rounded-full"></div>
                         </motion.div>
                         <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                           {sponsorsByTier.diamond.map((sponsor, index) => (

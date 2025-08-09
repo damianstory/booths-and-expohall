@@ -98,6 +98,31 @@
     }
   }
 
+  /* Animated Gradient Text */
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animated-gradient-text {
+    background: linear-gradient(-45deg, #33A7FF, #0092FF, #0077CC, #005599);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Fallback for browsers that don't support background-clip: text */
+  @supports not (background-clip: text) or not (-webkit-background-clip: text) {
+    .animated-gradient-text {
+      color: #0092FF;
+      background: none;
+    }
+  }
+
   /* Booth Card Animations */
   .booth-card-wrapper {
     animation: fadeInUp 0.6s var(--ease-standard) both;

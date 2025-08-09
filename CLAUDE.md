@@ -71,7 +71,7 @@ src/
 ## Architecture Overview
 
 ### Core Application Flow
-1. **Homepage (ExpoHall)** - Displays sponsor cards with filtering capabilities
+1. **Homepage (ExpoHall)** - Displays sponsor cards with advanced multi-select filtering capabilities
 2. **Booth Pages** - Individual sponsor experiences (Deluxe vs Standard based on tier)
 3. **Data Layer** - Static sponsor data with TypeScript interfaces
 
@@ -81,9 +81,17 @@ src/
 
 ### Tier-Based Styling System
 The `BoothCard` component uses a sophisticated tier-based styling system:
-- **Diamond**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span
+- **Diamond (Platinum)**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span, animated gradient header text
 - **Gold**: Standard animations, gradient backgrounds, medium grid span  
 - **Silver**: Minimal effects, basic hover states, small grid span
+
+### Multi-Select Filter System
+The filtering system supports:
+- **Industries**: Multi-select array-based filtering allowing users to select multiple industries simultaneously
+- **Pathways**: Multi-select array-based filtering for educational/career pathways
+- **Institution Type**: Single-select binary choice (Post-Secondary/Employers/All)
+- **Prize Filter**: Toggle button for booths offering prizes
+- **Filter State Management**: Uses arrays for industries/pathways, proper state tracking with filter change animations
 
 ### Key Architectural Patterns
 
@@ -128,6 +136,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 - **Particle effects**: Individual floating dots with staggered animations
 - **Shimmer effects**: Horizontal sweep animation on hover
 - **Hover optimization**: Extended invisible hover areas to prevent dual card refresh
+- **Animated gradient text**: CSS-based animated gradient for premium tier headers using brand color variations
 
 ## Data Structure
 
@@ -173,6 +182,12 @@ npm run lint
 - For animations, prefer CSS transforms over layout-changing properties
 - Test tier-specific styling across all three tiers (Diamond, Gold, Silver)
 
+### Styling Best Practices
+- **Tailwind dynamic classes**: Avoid template literals with conditionals, use complete class strings in ternary operators
+- **Color consistency**: Use hex values in bracket notation `[#0092FF]` for custom colors to ensure Tailwind compilation
+- **Multi-select UI**: Show active state with `bg-primary-blue text-white`, inactive with `bg-neutral-2 text-neutral-5`
+- **Gradient animations**: Use CSS keyframes in `globals.css` with `background-clip: text` for animated text effects
+
 ### Animation Performance
 - Diamond cards use floating CSS animations that should remain subtle (≤2px movement)
 - Hover effects should only trigger on mouse enter, not on mouse exit
@@ -182,7 +197,16 @@ npm run lint
 ### Data Management
 - All sponsor data lives in `sample-sponsors.ts` with typed interfaces
 - Booth routing uses static paths, not dynamic routing
-- Filter functionality in ExpoHall supports industry, pathway, and post-secondary criteria
+- Filter functionality in ExpoHall supports multi-select industries/pathways, binary institution type, and prize toggle
+- Each sponsor includes `isPrize` boolean for prize filtering
+
+### Filter Implementation Pattern
+When implementing new filters:
+- **Multi-select filters** (industries/pathways): Use arrays (`Industry[]`, `Pathway[]`) with `includes()` logic
+- **Toggle filters** (prizes): Use boolean state with direct filtering
+- **Binary filters** (institution type): Use `boolean | 'all'` for three-state logic
+- **Button behavior**: Toggle items in/out of arrays, show active state when item is in array
+- **"All" buttons**: Clear respective arrays to show all items
 
 ## Performance Targets
 

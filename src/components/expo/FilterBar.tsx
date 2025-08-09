@@ -1,16 +1,18 @@
 'use client'
 
 import React from 'react'
-import { GraduationCap, Briefcase } from 'lucide-react'
+import { GraduationCap, Briefcase, Gift } from 'lucide-react'
 import { Industry, Pathway } from '@/types/booth'
 
 interface FilterBarProps {
-  selectedIndustry: Industry | 'all'
-  selectedPathway: Pathway | 'all'
+  selectedIndustries: Industry[]
+  selectedPathways: Pathway[]
   showPostSecondary: boolean | 'all'
-  onIndustryChange: (industry: Industry | 'all') => void
-  onPathwayChange: (pathway: Pathway | 'all') => void
+  showPrizesOnly: boolean
+  onIndustriesChange: (industries: Industry[]) => void
+  onPathwaysChange: (pathways: Pathway[]) => void
   onPostSecondaryChange: (show: boolean | 'all') => void
+  onPrizesOnlyChange: (show: boolean) => void
 }
 
 const INDUSTRIES: Industry[] = [
@@ -35,15 +37,34 @@ const PATHWAYS: { value: Pathway; label: string }[] = [
 ]
 
 export default function FilterBar({
-  selectedIndustry,
-  selectedPathway,
+  selectedIndustries,
+  selectedPathways,
   showPostSecondary,
-  onIndustryChange,
-  onPathwayChange,
-  onPostSecondaryChange
+  showPrizesOnly,
+  onIndustriesChange,
+  onPathwaysChange,
+  onPostSecondaryChange,
+  onPrizesOnlyChange
 }: FilterBarProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+    <div className="relative bg-white rounded-xl shadow-lg p-6 mb-8">
+      {/* Prize Filter Toggle */}
+      <button
+        onClick={() => onPrizesOnlyChange(!showPrizesOnly)}
+        className={showPrizesOnly 
+          ? "absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-[#0092FF] hover:bg-blue-600 shadow-lg z-10"
+          : "absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gray-100 border border-gray-400 z-10"
+        }
+        title={showPrizesOnly ? 'Showing booths with prizes only' : 'Show all booths'}
+      >
+        <Gift 
+          className={showPrizesOnly 
+            ? "w-5 h-5 transition-colors duration-200 text-white"
+            : "w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-gray-700"
+          }
+        />
+      </button>
+
       {/* Post-Secondary Filter */}
       <div className="mb-6">
         <h3 className="text-subtitle-2 font-bold uppercase text-neutral-4 mb-3">INSTITUTION TYPE</h3>
@@ -61,7 +82,7 @@ export default function FilterBar({
             All Organizations
           </button>
           <button
-            onClick={() => onPostSecondaryChange(false)}
+            onClick={() => onPostSecondaryChange(showPostSecondary === false ? 'all' : false)}
             className={`
               px-4 py-2 rounded-full text-compact font-light transition-all flex items-center gap-2
               ${showPostSecondary === false
@@ -74,7 +95,7 @@ export default function FilterBar({
             Employers Only
           </button>
           <button
-            onClick={() => onPostSecondaryChange(true)}
+            onClick={() => onPostSecondaryChange(showPostSecondary === true ? 'all' : true)}
             className={`
               px-4 py-2 rounded-full text-compact font-light transition-all flex items-center gap-2
               ${showPostSecondary === true
@@ -94,10 +115,10 @@ export default function FilterBar({
         <h3 className="text-subtitle-2 font-bold uppercase text-neutral-4 mb-3">PATHWAY</h3>
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => onPathwayChange('all')}
+            onClick={() => onPathwaysChange([])}
             className={`
               px-3 py-1.5 rounded-full text-compact font-light transition-all
-              ${selectedPathway === 'all'
+              ${selectedPathways.length === 0
                 ? 'bg-primary-blue text-white'
                 : 'bg-neutral-2 text-neutral-5 hover:bg-neutral-3'
               }
@@ -108,10 +129,16 @@ export default function FilterBar({
           {PATHWAYS.map((pathway) => (
             <button
               key={pathway.value}
-              onClick={() => onPathwayChange(pathway.value)}
+              onClick={() => {
+                const isSelected = selectedPathways.includes(pathway.value)
+                const newPathways = isSelected
+                  ? selectedPathways.filter(p => p !== pathway.value)
+                  : [...selectedPathways, pathway.value]
+                onPathwaysChange(newPathways)
+              }}
               className={`
                 px-3 py-1.5 rounded-full text-compact font-light transition-all
-                ${selectedPathway === pathway.value
+                ${selectedPathways.includes(pathway.value)
                   ? 'bg-primary-blue text-white'
                   : 'bg-neutral-2 text-neutral-5 hover:bg-neutral-3'
                 }
@@ -128,10 +155,10 @@ export default function FilterBar({
         <h3 className="text-subtitle-2 font-bold uppercase text-neutral-4 mb-3">INDUSTRY</h3>
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => onIndustryChange('all')}
+            onClick={() => onIndustriesChange([])}
             className={`
               px-3 py-1.5 rounded-full text-compact font-light transition-all
-              ${selectedIndustry === 'all'
+              ${selectedIndustries.length === 0
                 ? 'bg-primary-blue text-white'
                 : 'bg-neutral-2 text-neutral-5 hover:bg-neutral-3'
               }
@@ -142,10 +169,16 @@ export default function FilterBar({
           {INDUSTRIES.map((industry) => (
             <button
               key={industry}
-              onClick={() => onIndustryChange(industry)}
+              onClick={() => {
+                const isSelected = selectedIndustries.includes(industry)
+                const newIndustries = isSelected
+                  ? selectedIndustries.filter(i => i !== industry)
+                  : [...selectedIndustries, industry]
+                onIndustriesChange(newIndustries)
+              }}
               className={`
                 px-3 py-1.5 rounded-full text-compact font-light transition-all
-                ${selectedIndustry === industry
+                ${selectedIndustries.includes(industry)
                   ? 'bg-primary-blue text-white'
                   : 'bg-neutral-2 text-neutral-5 hover:bg-neutral-3'
                 }
@@ -158,7 +191,7 @@ export default function FilterBar({
       </div>
 
       {/* Active Filters Summary */}
-      {(selectedIndustry !== 'all' || selectedPathway !== 'all' || showPostSecondary !== 'all') && (
+      {(selectedIndustries.length > 0 || selectedPathways.length > 0 || showPostSecondary !== 'all' || showPrizesOnly) && (
         <div className="mt-4 pt-4 border-t border-neutral-2">
           <div className="flex items-center gap-2 text-compact text-neutral-4 flex-wrap">
             <span>Active filters:</span>
@@ -167,21 +200,28 @@ export default function FilterBar({
                 {showPostSecondary ? 'Post-Secondary' : 'Employers'}
               </span>
             )}
-            {selectedPathway !== 'all' && (
-              <span className="px-2 py-1 bg-primary-blue/10 text-primary-blue rounded-full">
-                {PATHWAYS.find(p => p.value === selectedPathway)?.label}
+            {selectedPathways.map(pathway => (
+              <span key={pathway} className="px-2 py-1 bg-primary-blue/10 text-primary-blue rounded-full">
+                {PATHWAYS.find(p => p.value === pathway)?.label}
               </span>
-            )}
-            {selectedIndustry !== 'all' && (
-              <span className="px-2 py-1 bg-primary-blue/10 text-primary-blue rounded-full">
-                {selectedIndustry}
+            ))}
+            {selectedIndustries.map(industry => (
+              <span key={industry} className="px-2 py-1 bg-primary-blue/10 text-primary-blue rounded-full">
+                {industry}
+              </span>
+            ))}
+            {showPrizesOnly && (
+              <span className="px-2 py-1 bg-primary-blue/10 text-primary-blue rounded-full flex items-center gap-1">
+                <Gift className="w-3 h-3" />
+                Prizes
               </span>
             )}
             <button
               onClick={() => {
-                onIndustryChange('all')
-                onPathwayChange('all')
+                onIndustriesChange([])
+                onPathwaysChange([])
                 onPostSecondaryChange('all')
+                onPrizesOnlyChange(false)
               }}
               className="ml-auto text-primary-blue hover:text-blue-700 font-light"
             >
