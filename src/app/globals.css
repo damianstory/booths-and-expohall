@@ -65,6 +65,17 @@
   .text-subtitle-2 { 
     @apply text-[0.625rem] leading-[1rem]; /* 10/16 */
   }
+
+  /* Mobile Typography Variants */
+  .text-h1-mobile {
+    @apply text-[2.5rem] leading-[3rem] font-black; /* 40/48 mobile */
+  }
+  .text-body-large-mobile {
+    @apply text-[1rem] leading-[1.5rem]; /* 16/24 mobile */
+  }
+  .text-body-large {
+    @apply text-[1.125rem] leading-[1.75rem]; /* 18/28 tablet+ */
+  }
 }
 
 @layer components {

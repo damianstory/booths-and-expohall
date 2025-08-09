@@ -58,6 +58,8 @@ src/
 │   │   ├── BoothCardSkeleton.tsx
 │   │   ├── ExpoHall.tsx        # Main sponsor listing page
 │   │   └── FilterBar.tsx       # Industry/pathway filtering
+│   ├── sections/               # Homepage sections
+│   │   └── Hero.tsx            # Hero section with neon OPEN sign background
 │   └── ui/                     # Reusable UI components
 │       ├── EmptyStateIllustration.tsx
 │       ├── ErrorBoundary.tsx
@@ -65,6 +67,9 @@ src/
 │       └── NetworkError.tsx
 ├── data/
 │   └── sample-sponsors.ts      # Static sponsor data (10 sponsors)
+├── public/
+│   └── images/
+│       └── expo-hero-background.jpg  # Hero section background with neon sign
 └── types/
     └── booth.ts                # TypeScript interfaces for booth data
 ```
@@ -145,6 +150,15 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 - **Fade-in animations**: `fadeInUp` with cubic-bezier easing for smooth entrance
 - **Performance optimizations**: `backface-visibility: hidden` and `transform3d` for hardware acceleration
 - **Accessibility**: Reduced motion media query support
+
+### Hero Section
+- **Background Image**: Neon "OPEN" sign positioned using `object-position`
+  - Mobile: `object-[center_75%]` - pushes image down to avoid text overlap
+  - Tablet: `object-[75%_center]` - shifts right for balance
+  - Desktop: `object-[85%_center]` - maximum right shift for breathing room
+- **Text Backdrop**: Full-height semi-transparent overlay on mobile (`bg-black/50 backdrop-blur-sm`)
+- **Gradient Overlay**: Stronger on mobile (`from-black/75`) for text contrast
+- **Text Layout**: Three-line structure with "You." as emphasis on third line
 
 ## Data Structure
 
@@ -228,7 +242,7 @@ Optimization strategies include image optimization, lazy loading for embeds, cod
 
 ## Important Files
 
-- **PRD.md**: Complete product requirements document with detailed specifications
+- **PRD.md**: Product requirements document outlining virtual career fair expo & booth system specifications
 - **design-specs.md**: Visual design specifications (currently placeholder)
 - **todo.md**: Task tracking and progress documentation
 

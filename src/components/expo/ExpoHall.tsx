@@ -12,6 +12,8 @@ import ErrorBoundary from '@/components/ui/ErrorBoundary'
 import NetworkError from '@/components/ui/NetworkError'
 import EmptyStateIllustration from '@/components/ui/EmptyStateIllustration'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
+import Navigation from '@/components/layout/Navigation'
+import Hero from '@/components/sections/Hero'
 import { Sparkles, TrendingUp, Users, Building, Gift } from 'lucide-react'
 
 type LoadingState = 'initial' | 'loading' | 'success' | 'error'
@@ -320,57 +322,12 @@ export default function ExpoHall() {
 
   return (
     <ErrorBoundary>
+      <Navigation />
       <div className="min-h-screen bg-gradient-to-b from-background-light to-white">
-        {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-primary-blue to-indigo-600 text-white">
-          <div className="absolute inset-0 bg-black opacity-10"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-20">
-            <div className="text-center">
-              <motion.div 
-                className="flex items-center justify-center gap-2 mb-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <h1 className="text-6xl font-black">myBlueprint Career Launch Expo</h1>
-              </motion.div>
-              <motion.p 
-                className="text-xl font-medium opacity-90 mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-              >
-                Explore interactive booths from leading companies and institutions across Canada
-              </motion.p>
-              <motion.div 
-                className="flex flex-wrap gap-4 justify-center text-sm"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                  <span className="font-bold">{stats.postSecondary}</span> Post-Secondary
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                  <span className="font-bold">{stats.employers}</span> Employers
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                  <span className="font-bold">{sponsors.length}</span> Total Booths
-                </div>
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Decorative wave */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg className="w-full h-12" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 48h1440V0c-240 16-480 24-720 24S240 16 0 0v48z" fill="currentColor" className="text-background-light" />
-            </svg>
-          </div>
-        </div>
-
+        <Hero />
+        
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div id="booths" className="max-w-7xl mx-auto px-4 py-6">
           {/* Error State */}
           {loadingState === 'error' && (
             <NetworkError 

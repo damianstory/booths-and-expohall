@@ -17,7 +17,7 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
       <nav className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="max-w-[1400px] mx-auto flex items-center text-sm">
           <a href="/" className="text-neutral-5 hover:text-primary-blue transition-colors">
-            ⬅️  Back to Expo
+            ⬅️  Back to All Booths
           </a>
           <span className="mx-2 text-neutral-5">/</span>
           <span className="text-brand-navy font-medium">{sponsor.name}</span>
