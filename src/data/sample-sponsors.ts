@@ -1,11 +1,11 @@
 import { DeluxeBoothData, StandardBoothData, Pathway } from '@/types/booth'
 
-// Diamond Tier Sponsors (Deluxe Booths)
+// Platinum Tier Sponsors (Deluxe Booths)
 export const techCorpSponsor: DeluxeBoothData = {
   id: 'deluxe-booth-template',
   name: 'Deluxe Booth\nTemplate',
   slug: 'deluxe-booth-template',
-  tier: 'diamond',
+  tier: 'platinum',
   industry: 'Technology',
   isPostSecondary: false,
   pathway: 'direct-to-workplace' as Pathway,
@@ -147,7 +147,7 @@ export const healthPlusSponsor: DeluxeBoothData = {
   id: 'healthplus-medical',
   name: 'HealthPlus\nMedical',
   slug: 'healthplus-medical',
-  tier: 'diamond',
+  tier: 'platinum',
   industry: 'Healthcare',
   isPostSecondary: false,
   pathway: 'university' as Pathway,
@@ -268,7 +268,7 @@ export const globalFinanceSponsor: DeluxeBoothData = {
   id: 'global-finance-group',
   name: 'Global Finance\nGroup',
   slug: 'global-finance-group',
-  tier: 'diamond',
+  tier: 'platinum',
   industry: 'Finance',
   isPostSecondary: false,
   pathway: 'university' as Pathway,
@@ -953,7 +953,7 @@ export const silverSponsor = digitalMarketingHubSponsor
 
 // Export all sponsors as an array
 export const sponsors = [
-  // Diamond Tier
+  // Platinum Tier
   techCorpSponsor,
   healthPlusSponsor,
   globalFinanceSponsor,

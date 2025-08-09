@@ -30,7 +30,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
   // Tier-specific styles
   const getTierStyles = () => {
     switch (sponsor.tier) {
-      case 'diamond':
+      case 'platinum':
         return {
           wrapper: 'col-span-2 md:col-span-3 lg:col-span-3 xl:col-span-3',
           card: `
@@ -74,12 +74,12 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
 
   const styles = getTierStyles()
 
-  // Enhanced wrapper component for diamond cards only
-  const DiamondCardEnhancements = ({ children, tier }: { children: React.ReactNode, tier: string }) => {
-    if (tier === 'diamond') {
+  // Enhanced wrapper component for platinum cards only
+  const PlatinumCardEnhancements = ({ children, tier }: { children: React.ReactNode, tier: string }) => {
+    if (tier === 'platinum') {
       return (
         <div className="relative group">
-          {/* Animated background particles for diamond - only CSS hover, no JS state */}
+          {/* Animated background particles for platinum - only CSS hover, no JS state */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400 rounded-full animate-particle-float-1"></div>
             <div className="absolute top-8 right-6 w-1 h-1 bg-cyan-400 rounded-full animate-particle-float-2"></div>
@@ -97,7 +97,7 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
   }
 
   return (
-    <DiamondCardEnhancements tier={sponsor.tier}>
+    <PlatinumCardEnhancements tier={sponsor.tier}>
       <div className={`${styles.wrapper} booth-card-wrapper`}>
         <Link href={`/${sponsor.slug}`}>
           <motion.div
@@ -105,13 +105,13 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             className={`
               booth-card group relative rounded-xl p-6 cursor-pointer flex flex-col
               ${styles.card} ${styles.glow}
-              ${sponsor.tier === 'diamond' ? 'animate-float' : ''}
+              ${sponsor.tier === 'platinum' ? 'animate-float' : ''}
               h-[320px]
             `}
           whileHover={{ 
             scale: 1.02,
-            rotateY: sponsor.tier === 'diamond' ? 2 : 1,
-            rotateX: sponsor.tier === 'diamond' ? -1 : -0.5,
+            rotateY: sponsor.tier === 'platinum' ? 2 : 1,
+            rotateX: sponsor.tier === 'platinum' ? -1 : -0.5,
             transition: { 
               duration: 0.2,
               ease: [0.4, 0, 0.2, 1]
@@ -234,8 +234,8 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
             </div>
           </div>
 
-          {/* Decorative Elements for Diamond Tier - Pure CSS hover */}
-          {sponsor.tier === 'diamond' && (
+          {/* Decorative Elements for Platinum Tier - Pure CSS hover */}
+          {sponsor.tier === 'platinum' && (
             <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none overflow-hidden">
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-primary-blue/10 to-purple-500/10 rounded-full blur-3xl opacity-60 scale-100 group-hover:opacity-80 group-hover:scale-110 transition-all duration-300"></div>
               <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 rounded-full blur-3xl opacity-50 scale-100 group-hover:opacity-70 group-hover:scale-120 transition-all duration-400"></div>
@@ -244,6 +244,6 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
         </motion.div>
       </Link>
     </div>
-    </DiamondCardEnhancements>
+    </PlatinumCardEnhancements>
   )
 }

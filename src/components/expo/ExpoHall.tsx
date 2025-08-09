@@ -54,9 +54,9 @@ export default function ExpoHall() {
       filtered = filtered.filter(sponsor => sponsor.isPrize)
     }
 
-    // Sort by tier priority: diamond > gold > silver
+    // Sort by tier priority: platinum > gold > silver
     filtered.sort((a, b) => {
-      const tierOrder = { diamond: 0, gold: 1, silver: 2 }
+      const tierOrder = { platinum: 0, gold: 1, silver: 2 }
       return tierOrder[a.tier] - tierOrder[b.tier]
     })
 
@@ -65,11 +65,11 @@ export default function ExpoHall() {
 
   // Group filtered sponsors by tier
   const sponsorsByTier = useMemo(() => {
-    const diamond = filteredSponsors.filter(s => s.tier === 'diamond')
+    const platinum = filteredSponsors.filter(s => s.tier === 'platinum')
     const gold = filteredSponsors.filter(s => s.tier === 'gold')
     const silver = filteredSponsors.filter(s => s.tier === 'silver')
     
-    return { diamond, gold, silver }
+    return { platinum, gold, silver }
   }, [filteredSponsors])
 
   // Count statistics
@@ -77,7 +77,7 @@ export default function ExpoHall() {
     return {
       postSecondary: sponsors.filter(s => s.isPostSecondary).length,
       employers: sponsors.filter(s => !s.isPostSecondary).length,
-      diamond: sponsors.filter(s => s.tier === 'diamond').length,
+      platinum: sponsors.filter(s => s.tier === 'platinum').length,
       gold: sponsors.filter(s => s.tier === 'gold').length,
       silver: sponsors.filter(s => s.tier === 'silver').length
     }
@@ -180,7 +180,7 @@ export default function ExpoHall() {
   const generateSkeletonCards = () => {
     const skeletons = []
     for (let i = 0; i < 12; i++) {
-      const tier = i < 2 ? 'diamond' : i < 6 ? 'gold' : 'silver'
+      const tier = i < 2 ? 'platinum' : i < 6 ? 'gold' : 'silver'
       skeletons.push(<BoothCardSkeleton key={i} tier={tier} index={i} />)
     }
     return skeletons
@@ -309,8 +309,8 @@ export default function ExpoHall() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {/* Premier Partners Section (Diamond) */}
-                    {sponsorsByTier.diamond.length > 0 && (
+                    {/* Premier Partners Section (Platinum) */}
+                    {sponsorsByTier.platinum.length > 0 && (
                       <div>
                         <motion.div 
                           className="mb-6"
@@ -324,7 +324,7 @@ export default function ExpoHall() {
                           <div className="h-1.5 w-24 bg-[#0092FF] rounded-full"></div>
                         </motion.div>
                         <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                          {sponsorsByTier.diamond.map((sponsor, index) => (
+                          {sponsorsByTier.platinum.map((sponsor, index) => (
                             <motion.div
                               key={sponsor.id}
                               initial={{ opacity: 0, y: 30 }}
@@ -367,13 +367,13 @@ export default function ExpoHall() {
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ 
                                 duration: 0.5,
-                                delay: (sponsorsByTier.diamond.length + index) * 0.05,
+                                delay: (sponsorsByTier.platinum.length + index) * 0.05,
                                 ease: [0.4, 0, 0.2, 1]
                               }}
                             >
                               <BoothCard 
                                 sponsor={sponsor} 
-                                index={sponsorsByTier.diamond.length + index}
+                                index={sponsorsByTier.platinum.length + index}
                               />
                             </motion.div>
                           ))}
@@ -403,13 +403,13 @@ export default function ExpoHall() {
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ 
                                 duration: 0.5,
-                                delay: (sponsorsByTier.diamond.length + sponsorsByTier.gold.length + index) * 0.05,
+                                delay: (sponsorsByTier.platinum.length + sponsorsByTier.gold.length + index) * 0.05,
                                 ease: [0.4, 0, 0.2, 1]
                               }}
                             >
                               <BoothCard 
                                 sponsor={sponsor} 
-                                index={sponsorsByTier.diamond.length + sponsorsByTier.gold.length + index}
+                                index={sponsorsByTier.platinum.length + sponsorsByTier.gold.length + index}
                               />
                             </motion.div>
                           ))}

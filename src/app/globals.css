@@ -248,7 +248,7 @@
   }
 
   /* Glow effects */
-  .glow-diamond {
+  .glow-platinum {
     box-shadow: 0 0 30px rgba(0, 146, 255, 0.2);
   }
 
@@ -272,7 +272,7 @@
     animation: shimmer 2s infinite;
   }
 
-  /* Enhanced shimmer effects for diamond tier */
+  /* Enhanced shimmer effects for platinum tier */
   .shimmer-effect {
     background: linear-gradient(
       90deg,

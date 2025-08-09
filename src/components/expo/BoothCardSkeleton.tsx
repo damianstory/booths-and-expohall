@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 interface BoothCardSkeletonProps {
-  tier?: 'diamond' | 'gold' | 'silver'
+  tier?: 'platinum' | 'gold' | 'silver'
   index?: number
 }
 
@@ -12,7 +12,7 @@ export default function BoothCardSkeleton({ tier = 'silver', index = 0 }: BoothC
   // Tier-specific styles to match real cards
   const getTierStyles = () => {
     switch (tier) {
-      case 'diamond':
+      case 'platinum':
         return {
           wrapper: 'col-span-2 md:col-span-2 lg:col-span-2',
           height: 'h-[320px]',
@@ -72,7 +72,7 @@ export default function BoothCardSkeleton({ tier = 'silver', index = 0 }: BoothC
           {/* Tagline Lines */}
           <div className="skeleton h-4 w-full rounded mb-1"></div>
           <div className="skeleton h-4 w-2/3 rounded mb-1"></div>
-          {tier === 'diamond' && (
+          {tier === 'platinum' && (
             <div className="skeleton h-4 w-1/2 rounded mb-1"></div>
           )}
 

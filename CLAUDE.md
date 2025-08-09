@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features two booth types (Deluxe and Standard) with tier-based styling (Diamond, Gold, Silver) and modular components for different content sections.
+This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features two booth types (Deluxe and Standard) with tier-based styling (Platinum, Gold, Silver) and modular components for different content sections.
 
 ## Technology Stack
 
@@ -20,7 +20,7 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 ### URL Structure
 ```
 /                       # Homepage (ExpoHall with sponsor cards)
-/deluxe-booth-template  # Diamond tier booth example
+/deluxe-booth-template  # Platinum tier booth example
 /gold-booth-template    # Gold tier booth example  
 /silver-booth-template  # Silver tier booth example
 /test                   # Test page
@@ -30,7 +30,7 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 ```
 src/
 ├── app/
-│   ├── deluxe-booth-template/  # Diamond tier booth demo
+│   ├── deluxe-booth-template/  # Platinum tier booth demo
 │   ├── gold-booth-template/    # Gold tier booth demo
 │   ├── silver-booth-template/  # Silver tier booth demo
 │   ├── test/                   # Test page
@@ -39,7 +39,7 @@ src/
 │   └── page.tsx                # Homepage (ExpoHall)
 ├── components/
 │   ├── booth/                  # Individual booth components
-│   │   ├── DeluxeBooth.tsx     # Diamond tier booth (full features)
+│   │   ├── DeluxeBooth.tsx     # Platinum tier booth (full features)
 │   │   ├── StandardBooth.tsx   # Gold/Silver tier booth (simplified)
 │   │   └── sections/           # Modular booth sections
 │   │       ├── BoothHeader.tsx
@@ -76,12 +76,12 @@ src/
 3. **Data Layer** - Static sponsor data with TypeScript interfaces
 
 ### Two-Booth System
-- **DeluxeBooth** (Diamond Tier): Full-featured booth with bento grid, video, resources, interactive activities
+- **DeluxeBooth** (Platinum Tier): Full-featured booth with bento grid, video, resources, interactive activities
 - **StandardBooth** (Gold/Silver Tiers): Simplified booth with basic sections and Google Form embed
 
 ### Tier-Based Styling System
 The `BoothCard` component uses a sophisticated tier-based styling system:
-- **Diamond (Platinum)**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span, animated gradient header text
+- **Platinum**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span, animated gradient header text
 - **Gold**: Standard animations, gradient backgrounds, medium grid span  
 - **Silver**: Minimal effects, basic hover states, small grid span
 
@@ -132,7 +132,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 - **Grid Gaps**: Reduced horizontal gaps to prevent hover boundary issues (row gap ≠ column gap)
 
 ### Animation System  
-- **Float animations**: Subtle 6-second floating with 2px movement for diamond cards
+- **Float animations**: Subtle 6-second floating with 2px movement for platinum cards
 - **Particle effects**: Individual floating dots with staggered animations
 - **Shimmer effects**: Horizontal sweep animation on hover
 - **Hover optimization**: Extended invisible hover areas to prevent dual card refresh
@@ -141,7 +141,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 ## Data Structure
 
 ### Interface Hierarchy
-- **`DeluxeBoothData`** - Full-featured booth (Diamond tier) with all sections
+- **`DeluxeBoothData`** - Full-featured booth (Platinum tier) with all sections
 - **`StandardBoothData`** - Simplified booth (Gold/Silver tiers) with Google Form
 - **Shared interfaces**:
   - `VideoContent` - Multi-provider video embed support
@@ -153,7 +153,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
   - `BrandColors` - Sponsor-specific color theming
 
 ### Sample Data Structure
-- **3 Diamond tier sponsors**: TechCorp, HealthPlus, Global Finance
+- **3 Platinum tier sponsors**: TechCorp, HealthPlus, Global Finance
 - **3 Gold tier sponsors**: Green Energy, Nexus Engineering, Strategy Plus  
 - **4 Silver tier sponsors**: Digital Marketing Hub, EduTech, Retail Plus, Smart Manufacturing
 - Each sponsor includes industry classification, pathway mapping, and post-secondary flags for filtering
@@ -180,7 +180,7 @@ npm run lint
 - When enhancing BoothCard styling, always test hover behavior to prevent dual refresh issues
 - Use pure CSS hover effects (`group-hover:`) over JavaScript state when possible
 - For animations, prefer CSS transforms over layout-changing properties
-- Test tier-specific styling across all three tiers (Diamond, Gold, Silver)
+- Test tier-specific styling across all three tiers (Platinum, Gold, Silver)
 
 ### Styling Best Practices
 - **Tailwind dynamic classes**: Avoid template literals with conditionals, use complete class strings in ternary operators
@@ -189,7 +189,7 @@ npm run lint
 - **Gradient animations**: Use CSS keyframes in `globals.css` with `background-clip: text` for animated text effects
 
 ### Animation Performance
-- Diamond cards use floating CSS animations that should remain subtle (≤2px movement)
+- Platinum cards use floating CSS animations that should remain subtle (≤2px movement)
 - Hover effects should only trigger on mouse enter, not on mouse exit
 - Use `group` classes for nested hover effects to maintain performance
 - Extended hover areas (invisible padding) prevent hover boundary issues
