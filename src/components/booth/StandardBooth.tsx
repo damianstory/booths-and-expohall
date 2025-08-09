@@ -42,7 +42,7 @@ const StandardBooth: React.FC<StandardBoothProps> = ({ sponsor }) => {
           </div>
 
           {/* Bottom section: Resources (4 cols) + Story & Contact stacked (8 cols) */}
-          <div className={`${bentoCardClass} p-6 col-span-12 md:col-span-6 lg:col-span-4 h-[320px]`}>
+          <div className={`${bentoCardClass} p-6 col-span-12 md:col-span-6 lg:col-span-4 h-[320px] overflow-visible`}>
             <ResourceCards resources={sponsor.resources} maxDisplay={3} variant="list" />
           </div>
 

@@ -102,14 +102,14 @@ const ResourceCards: React.FC<ResourceCardsProps> = ({
           })}
         </div>
       ) : (
-        <div className="flex-grow space-y-2 overflow-hidden">
+        <div className="flex-grow space-y-2 overflow-visible">
           {displayedResources.map((resource, index) => (
             <button
               key={index}
               onClick={() => handleResourceClick(resource.url)}
               className="w-full group block text-left"
             >
-              <div className="flex items-start gap-2.5 p-2.5 border border-neutral-2 rounded-lg hover:border-primary-blue hover:shadow-md hover:bg-light-blue/10 transform hover:-translate-y-0.5 transition-all duration-200">
+              <div className="flex items-start gap-2.5 p-2.5 border border-neutral-2 rounded-lg hover:border-primary-blue hover:shadow-md hover:bg-light-blue/10 transform hover:scale-[1.02] transition-all duration-200">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${getIconColor(resource.type)}`}>
                   {getIcon(resource.type)}
                 </div>

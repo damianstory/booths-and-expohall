@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { GraduationCap, Briefcase, Gift } from 'lucide-react'
+import { GraduationCap, Briefcase, Gift, Dices } from 'lucide-react'
 import { Industry, Pathway } from '@/types/booth'
 
 interface FilterBarProps {
@@ -13,6 +13,7 @@ interface FilterBarProps {
   onPathwaysChange: (pathways: Pathway[]) => void
   onPostSecondaryChange: (show: boolean | 'all') => void
   onPrizesOnlyChange: (show: boolean) => void
+  onRandomSelect: () => void
 }
 
 const INDUSTRIES: Industry[] = [
@@ -44,26 +45,39 @@ export default function FilterBar({
   onIndustriesChange,
   onPathwaysChange,
   onPostSecondaryChange,
-  onPrizesOnlyChange
+  onPrizesOnlyChange,
+  onRandomSelect
 }: FilterBarProps) {
   return (
     <div className="relative bg-white rounded-xl shadow-lg p-6 mb-8">
-      {/* Prize Filter Toggle */}
-      <button
-        onClick={() => onPrizesOnlyChange(!showPrizesOnly)}
-        className={showPrizesOnly 
-          ? "absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-[#0092FF] hover:bg-blue-600 shadow-lg z-10"
-          : "absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gray-100 border border-gray-400 z-10"
-        }
-        title={showPrizesOnly ? 'Showing booths with prizes only' : 'Show all booths'}
-      >
-        <Gift 
+      {/* Action Buttons Container - Responsive positioning */}
+      <div className="flex gap-3 mb-4 min-[800px]:absolute min-[800px]:top-4 min-[800px]:right-4 min-[800px]:mb-0 min-[800px]:flex-col min-[800px]:gap-2">
+        {/* Prize Filter Toggle */}
+        <button
+          onClick={() => onPrizesOnlyChange(!showPrizesOnly)}
           className={showPrizesOnly 
-            ? "w-5 h-5 transition-colors duration-200 text-white"
-            : "w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-gray-700"
+            ? "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-gradient-to-r from-[#0092FF] to-blue-600 shadow-lg z-10 hover:from-blue-600 hover:to-[#0092FF]"
+            : "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-[#0092FF] hover:to-sky-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
           }
-        />
-      </button>
+          title={showPrizesOnly ? 'Showing booths with prizes only' : 'Show all booths'}
+        >
+          <Gift 
+            className={showPrizesOnly 
+              ? "w-5 h-5 transition-colors duration-200 text-white"
+              : "w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white"
+            }
+          />
+        </button>
+
+        {/* Random Booth Selector */}
+        <button
+          onClick={onRandomSelect}
+          className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
+          title="Visit a random booth"
+        >
+          <Dices className="w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white" />
+        </button>
+      </div>
 
       {/* Post-Secondary Filter */}
       <div className="mb-6">

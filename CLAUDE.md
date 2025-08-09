@@ -8,11 +8,12 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 
 ## Technology Stack
 
-- **Framework:** Next.js 15.4.6 with TypeScript
-- **Styling:** Tailwind CSS with custom design tokens and CSS variables
-- **Animation:** Framer Motion for micro-interactions and state transitions
-- **Icons:** Lucide React
-- **Deployment:** Vercel
+- **Framework:** Next.js 15.4.6 with TypeScript 5
+- **Styling:** Tailwind CSS 3.4.1 with custom design tokens and CSS variables
+- **Animation:** Framer Motion 12.23.12 for micro-interactions and state transitions
+- **Icons:** Lucide React 0.469.0
+- **Fonts:** Inter via Next.js Google Fonts, with Museo Sans and Open Sans custom imports
+- **Linting:** ESLint 8 with Next.js core-web-vitals preset
 - **Content Management:** TypeScript interfaces with static data files
 
 ## Project Architecture
@@ -122,21 +123,28 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 - Neutral 5: `#6B7280` (`--neutral-5`)
 
 ### Typography
-- Font: Inter (loaded via Next.js Google Fonts)
-- System fallbacks: system-ui, sans-serif
+- **Primary font:** Inter (loaded via Next.js Google Fonts)
+- **Brand fonts:** 'Museo Sans' with 'Open Sans' fallback (custom Google Fonts)
+- **System fallbacks:** system-ui, sans-serif
+- **Font sizes:** Custom scale from `header-1` (4rem) to `subtitle-2` (0.625rem)
+- **Font weights:** light (300), regular (400), medium (500), semibold (600), bold (700), extrabold (800), black (900)
 
 ### Layout System
 - **Bento Grid**: `.expo-bento-grid` class with 12-column CSS Grid
 - **Spacing**: CSS variables (--space-sm: 16px, --space-md: 24px, --space-lg: 32px)
 - **Responsive**: Mobile-first with tablet (768px+) and desktop (1024px+) breakpoints
 - **Grid Gaps**: Reduced horizontal gaps to prevent hover boundary issues (row gap ≠ column gap)
+- **Custom easing**: `--ease-standard: cubic-bezier(0.4, 0, 0.2, 1)`
 
 ### Animation System  
 - **Float animations**: Subtle 6-second floating with 2px movement for platinum cards
-- **Particle effects**: Individual floating dots with staggered animations
+- **Particle effects**: 3 variants (particle-float-1/2/3) with staggered timing for visual depth
 - **Shimmer effects**: Horizontal sweep animation on hover
-- **Hover optimization**: Extended invisible hover areas to prevent dual card refresh
+- **Hover optimization**: Extended invisible hover areas (`margin: -2px; padding: 2px`) to prevent dual card refresh
 - **Animated gradient text**: CSS-based animated gradient for premium tier headers using brand color variations
+- **Fade-in animations**: `fadeInUp` with cubic-bezier easing for smooth entrance
+- **Performance optimizations**: `backface-visibility: hidden` and `transform3d` for hardware acceleration
+- **Accessibility**: Reduced motion media query support
 
 ## Data Structure
 
@@ -161,7 +169,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 ## Development Commands
 
 ```bash
-# Development server
+# Development server (runs on http://localhost:3000)
 npm run dev
 
 # Production build
@@ -170,9 +178,11 @@ npm run build
 # Start production server
 npm run start
 
-# Linting
+# Linting (ESLint with Next.js core-web-vitals preset)
 npm run lint
 ```
+
+**Note:** No test infrastructure currently implemented. Only the 4 standard Next.js scripts are available.
 
 ## Development Patterns
 
@@ -221,3 +231,11 @@ Optimization strategies include image optimization, lazy loading for embeds, cod
 - **PRD.md**: Complete product requirements document with detailed specifications
 - **design-specs.md**: Visual design specifications (currently placeholder)
 - **todo.md**: Task tracking and progress documentation
+
+## Configuration Files
+
+- **next.config.js**: Empty configuration (using Next.js defaults)
+- **.eslintrc.json**: Minimal config with "next/core-web-vitals" preset
+- **tailwind.config.ts**: Extended color palette and typography system
+- **tsconfig.json**: TypeScript config with `@/*` path alias for `./src/*`
+- **postcss.config.js**: Standard Tailwind CSS and Autoprefixer setup
