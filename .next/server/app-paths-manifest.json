@@ -1,5 +1,6 @@
 {
-  "/page": "app/page.js",
+  "/silver-booth-template/page": "app/silver-booth-template/page.js",
   "/deluxe-booth-template/page": "app/deluxe-booth-template/page.js",
-  "/silver-booth-template/page": "app/silver-booth-template/page.js"
+  "/page": "app/page.js",
+  "/gold-booth-template/page": "app/gold-booth-template/page.js"
 }

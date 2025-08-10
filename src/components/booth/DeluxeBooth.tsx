@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { DeluxeBoothProps } from '@/types/booth'
+import SmartContextHeader from './sections/SmartContextHeader'
 import BoothHeader from './sections/BoothHeader'
 import CompanyStory from './sections/CompanyStory'
 import VideoSection from './sections/VideoSection'
@@ -16,15 +17,7 @@ const DeluxeBooth: React.FC<DeluxeBoothProps> = ({ sponsor }) => {
   
   return (
     <div className="min-h-screen bg-background-light">
-      <nav className="bg-white border-b border-gray-200 px-4 py-3">
-        <div className="max-w-[1400px] mx-auto flex items-center text-sm">
-          <a href="/" className="text-neutral-5 hover:text-primary-blue transition-colors">
-            ⬅️  Back to All Booths
-          </a>
-          <span className="mx-2 text-neutral-5">/</span>
-          <span className="text-brand-navy font-medium">{sponsor.name}</span>
-        </div>
-      </nav>
+      <SmartContextHeader sponsor={sponsor} />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
