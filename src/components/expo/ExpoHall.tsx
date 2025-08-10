@@ -583,15 +583,16 @@ export default function ExpoHall() {
               to all myBlueprint users across Canada.
               <br />
               <br />
-              Recordings will be available to watch on-demand as of December 3rd, 2025.
-              <br />
-              Bookmark this page for easy access.
+              All session recordings will be available to watch on-demand as of December 3rd. Bookmark this page for easy access.
             </p>
             <div className="flex justify-center">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg px-12 py-8 max-w-4xl w-full text-center">
                 <h3 className="text-2xl font-bold mb-3">Pro Tip: Create a 'Career Launch' Portfolio in myBlueprint</h3>
                 <p className="text-sm text-white/90 leading-relaxed">
                   Take a screenshot of the booths you visited and add them to that portfolio along with a reflection of what you found interesting about the company, and what questions you have for them.
+                  <br />
+                  <br />
+                  <span className="underline">Grade 11s & 12s:</span> Add at least 10 companies, and 5 post-secondaries to your Career Launch Portfolio with reflections, and be entered to win one of three $1000 scholarships.
                 </p>
               </div>
             </div>

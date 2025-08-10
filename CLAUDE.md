@@ -240,10 +240,10 @@ When implementing new filters:
 
 Optimization strategies include image optimization, lazy loading for embeds, code splitting, and progressive enhancement.
 
-## Important Files
+## Important Documentation Files
 
-- **PRD.md**: Product requirements document outlining virtual career fair expo & booth system specifications
-- **design-specs.md**: Visual design specifications (currently placeholder)
+- **PRD.md**: Comprehensive 449-line product requirements document with technical specifications, user personas, and detailed feature requirements
+- **design-specs.md**: Detailed 705-line design system document with component specifications, animation details, and responsive behaviors
 - **todo.md**: Task tracking and progress documentation
 
 ## Configuration Files
@@ -253,3 +253,27 @@ Optimization strategies include image optimization, lazy loading for embeds, cod
 - **tailwind.config.ts**: Extended color palette and typography system
 - **tsconfig.json**: TypeScript config with `@/*` path alias for `./src/*`
 - **postcss.config.js**: Standard Tailwind CSS and Autoprefixer setup
+
+## Critical Performance Optimizations
+
+### Hover Boundary Issue Prevention
+The BoothCard component uses sophisticated hover optimization to prevent "dual card refresh" issues:
+- Extended invisible hover areas using `margin: -2px; padding: 2px`
+- Pure CSS hover effects with `group-hover:` classes instead of JavaScript state
+- This prevents flickering when hovering between adjacent cards in the grid
+
+### Filter State Management Complexity
+The ExpoHall component implements advanced filter state tracking:
+- Array equality checks for multi-select filters to detect changes
+- Debounced filter animations with 400ms transitions
+- Separate tracking of previous filter state to enable smooth transitions
+- Complex three-state logic for institution type filtering (`boolean | 'all'`)
+
+## Key Architectural Files for Deep Understanding
+
+When implementing new features, these files contain critical architectural patterns:
+- `/src/components/expo/ExpoHall.tsx:104-126` - Filter change detection and animation logic
+- `/src/components/expo/BoothCard.tsx` - Tier-based styling system with hover optimizations
+- `/src/components/expo/FilterBar.tsx` - Multi-select filter implementation patterns
+- `/src/app/globals.css` - Custom CSS animations and keyframes for premium effects
+- `/src/types/booth.ts` - TypeScript interface hierarchy (DeluxeBoothData vs StandardBoothData)

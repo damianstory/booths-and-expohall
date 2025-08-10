@@ -40,10 +40,11 @@ export default function Navigation() {
                 href="https://www.myblueprint.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-2 bg-primary-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-2 bg-primary-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
+                <span className="text-white">&lt;</span>
                 Back to Sessions
               </motion.a>
             </div>

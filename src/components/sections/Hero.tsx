@@ -1,9 +1,88 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+interface StatisticProps {
+  value: number | string
+  suffix?: string
+  label: string
+  format?: 'number' | 'k'
+}
+
+const AnimatedStatistic: React.FC<StatisticProps> = ({ value, suffix = '', label, format = 'number' }) => {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [])
+  
+  useEffect(() => {
+    if (!isVisible) return
+    
+    // If value is a string, don't animate
+    if (typeof value === 'string') {
+      setCount(value as any)
+      return
+    }
+    
+    const duration = 2000
+    const steps = 60
+    const increment = value / steps
+    let current = 0
+    
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= value) {
+        setCount(value)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(current))
+      }
+    }, duration / steps)
+    
+    return () => clearInterval(timer)
+  }, [isVisible, value])
+  
+  const formatValue = (val: number | string) => {
+    if (typeof val === 'string') return val
+    if (format === 'k') {
+      return val >= 1000 ? `${Math.floor(val / 1000)}k` : val.toString()
+    }
+    return val.toLocaleString()
+  }
+  
+  return (
+    <div ref={ref} className="text-center tablet:text-left">
+      <div className="text-3xl tablet:text-4xl desktop:text-5xl font-extrabold text-white">
+        {formatValue(count)}{suffix}
+      </div>
+      <div className="text-base tablet:text-lg font-normal text-white/70 mt-2">
+        {label}
+      </div>
+    </div>
+  )
+}
 
 const heroContent = {
   headline: {
@@ -13,7 +92,6 @@ const heroContent = {
   subtext: {
     line1: "Meet the companies investing in",
     line2: "Canada's future workforce.",
-    line3: "You."
   }
 }
 
@@ -64,8 +142,25 @@ export default function Hero() {
               >
                 <span className="block">{heroContent.subtext.line1}</span>
                 <span className="block">{heroContent.subtext.line2}</span>
-                <span className="block">{heroContent.subtext.line3}</span>
               </motion.p>
+
+              {/* Statistics */}
+              <motion.div 
+                className="flex justify-center tablet:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <div className="mr-8 tablet:mr-12 desktop:mr-16">
+                  <AnimatedStatistic value={25} label="Companies" />
+                </div>
+                <div className="mr-8 tablet:mr-12 desktop:mr-16">
+                  <AnimatedStatistic value={15} label="Post-Secondaries" />
+                </div>
+                <div>
+                  <AnimatedStatistic value={5} label="Pathways" />
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
