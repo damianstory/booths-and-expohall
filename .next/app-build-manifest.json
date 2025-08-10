@@ -11,11 +11,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/deluxe-booth-template/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/deluxe-booth-template/page.js"
-    ],
     "/silver-booth-template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

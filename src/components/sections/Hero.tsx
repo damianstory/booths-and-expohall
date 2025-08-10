@@ -27,13 +27,11 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/expo-hero-background-new.jpg"
+          src="/images/pexels-scottwebb-430207.jpg"
           alt="Career expo background"
           fill
           className="object-cover object-[center_60%] tablet:object-[60%_center] desktop:object-[70%_center]"
           priority
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
         
         {/* Gradient Overlay - stronger on mobile for better text visibility */}
@@ -43,7 +41,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative h-full flex items-center">
         {/* Full-screen backdrop for mobile readability */}
-        <div className="w-full h-full bg-black/50 backdrop-blur-sm tablet:bg-transparent flex items-center">
+        <div className="w-full h-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 w-full">
             <div className="max-w-4xl text-center tablet:text-left">
               {/* Main Headline - Bigger and Bolder */}

@@ -49,11 +49,11 @@ export default function Navigation() {
             </div>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href="/" className="flex items-center">
                 <Image
                   src="/images/myblueprint-logo.png"
                   alt="myBlueprint"
@@ -62,8 +62,8 @@ export default function Navigation() {
                   className="h-8 md:h-10 w-auto object-contain"
                   priority
                 />
-              </motion.div>
-            </Link>
+              </Link>
+            </motion.div>
 
           </div>
         </div>
