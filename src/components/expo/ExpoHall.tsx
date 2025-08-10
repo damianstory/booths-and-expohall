@@ -588,28 +588,11 @@ export default function ExpoHall() {
               Bookmark this page for easy access.
             </p>
             <div className="flex justify-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-12 py-6 max-w-4xl w-full">
-                <div className="flex flex-wrap gap-8 justify-center items-center text-center">
-                  <div>
-                    <span className="text-2xl font-bold">10+</span>
-                    <p className="text-sm">Organizations</p>
-                  </div>
-                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
-                  <div>
-                    <span className="text-2xl font-bold">1000s</span>
-                    <p className="text-sm">of Opportunities</p>
-                  </div>
-                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
-                  <div>
-                    <span className="text-2xl font-bold">5</span>
-                    <p className="text-sm">Pathways</p>
-                  </div>
-                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
-                  <div>
-                    <span className="text-2xl font-bold">10+</span>
-                    <p className="text-sm">Industries</p>
-                  </div>
-                </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-12 py-8 max-w-4xl w-full text-center">
+                <h3 className="text-2xl font-bold mb-3">Pro Tip: Create a 'Career Launch' Portfolio in myBlueprint</h3>
+                <p className="text-sm text-white/90 leading-relaxed">
+                  Take a screenshot of the booths you visited and add them to that portfolio along with a reflection of what you found interesting about the company, and what questions you have for them.
+                </p>
               </div>
             </div>
           </div>
