@@ -1,6 +1,7 @@
 import React from 'react'
 import { CTAButton } from '@/types/booth'
 import { ArrowRight, ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 
 interface FooterCTAProps {
   primaryCTA?: CTAButton
@@ -51,13 +52,13 @@ const FooterCTA: React.FC<FooterCTAProps> = ({
       </div>
 
       <div className="mt-12 pt-8 border-t border-gray-200">
-        <a 
+        <Link 
           href="/"
           className="inline-flex items-center gap-2 text-sm text-neutral-5 hover:text-primary-blue transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
           Back to Virtual Expo Directory
-        </a>
+        </Link>
       </div>
     </div>
   )

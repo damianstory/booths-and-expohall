@@ -20,7 +20,7 @@ export default function EmptyStateIllustration({
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as const,
         staggerChildren: 0.1
       }
     }
@@ -41,7 +41,7 @@ export default function EmptyStateIllustration({
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }

@@ -285,8 +285,8 @@ export default function SkillsGapQuiz() {
     el.style.transition = 'none'
     el.style.width = '0%'
     // force reflow
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    el.offsetWidth
+    // Force reflow to reset animation
+    void el.offsetWidth
     el.style.transition = 'width 10s linear'
   }
 
@@ -359,13 +359,13 @@ export default function SkillsGapQuiz() {
             Welcome to the Skills Gap Quiz!
           </h1>
           <p className="text-gray-600 mb-2">
-            This quiz is based on a recent report analyzing Canada's labour market.
+            This quiz is based on a recent report analyzing Canada&apos;s labour market.
           </p>
           <p className="text-gray-600 mb-2">
             The report identifies key sectors facing worker shortages (like healthcare and skilled trades), highlights the growing need for post-secondary training (especially college and trades), and examines the mismatch between available skills and job demands, which impacts the economy. It also suggests potential solutions involving education and immigration policy.
           </p>
           <p className="text-gray-600 mb-6">
-            Test your understanding with these 15 multiple-choice questions. After each answer, you'll receive immediate feedback and helpful follow-up information. Take a moment to read the information before moving on. Good luck!
+            Test your understanding with these 15 multiple-choice questions. After each answer, you&apos;ll receive immediate feedback and helpful follow-up information. Take a moment to read the information before moving on. Good luck!
           </p>
           <button
             onClick={startQuiz}
