@@ -66,7 +66,7 @@ const SmartContextHeader: React.FC<SmartContextHeaderProps> = ({ sponsor }) => {
                 />
               </div>
               <span className="hidden sm:inline text-sm font-medium text-neutral-5 group-hover:text-primary-blue">
-                Back to Expo
+                Back to All Booths
               </span>
               <span className="sm:hidden text-sm font-medium text-neutral-5 group-hover:text-primary-blue">
                 Back

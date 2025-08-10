@@ -52,12 +52,15 @@ src/
 │   │       ├── ResourceCards.tsx
 │   │       ├── SessionSlides.tsx
 │   │       ├── SkillsGapQuiz.tsx
+│   │       ├── SmartContextHeader.tsx  # Breadcrumb navigation for booths
 │   │       └── VideoSection.tsx
 │   ├── expo/                   # Sponsor listing components
 │   │   ├── BoothCard.tsx       # Sponsor card with tier-specific styling
 │   │   ├── BoothCardSkeleton.tsx
 │   │   ├── ExpoHall.tsx        # Main sponsor listing page
 │   │   └── FilterBar.tsx       # Industry/pathway filtering
+│   ├── layout/                 # Global layout components
+│   │   └── Navigation.tsx      # Top navigation with breadcrumb-style back button
 │   ├── sections/               # Homepage sections
 │   │   └── Hero.tsx            # Hero section with neon OPEN sign background
 │   └── ui/                     # Reusable UI components
@@ -218,6 +221,14 @@ npm run lint
 - Use `group` classes for nested hover effects to maintain performance
 - Extended hover areas (invisible padding) prevent hover boundary issues
 
+### Navigation Pattern Consistency
+The application uses consistent breadcrumb-style navigation patterns:
+- **SmartContextHeader** (booth pages): Advanced breadcrumb with scroll-based state changes, animated glow effects
+- **Navigation** (main layout): Simplified version of the same pattern for "Back to Sessions" button
+- Both use ArrowLeft icon with animated glow effect on hover (`bg-primary-blue/20` with scale animation)
+- Consistent styling: `rounded-xl`, `hover:bg-primary-blue/5`, `text-neutral-5 group-hover:text-primary-blue`
+- When creating new navigation elements, follow this established pattern for visual consistency
+
 ### Data Management
 - All sponsor data lives in `sample-sponsors.ts` with typed interfaces
 - Booth routing uses static paths, not dynamic routing
@@ -275,5 +286,7 @@ When implementing new features, these files contain critical architectural patte
 - `/src/components/expo/ExpoHall.tsx:104-126` - Filter change detection and animation logic
 - `/src/components/expo/BoothCard.tsx` - Tier-based styling system with hover optimizations
 - `/src/components/expo/FilterBar.tsx` - Multi-select filter implementation patterns
+- `/src/components/booth/sections/SmartContextHeader.tsx:53-74` - Breadcrumb navigation with animated glow effects
+- `/src/components/layout/Navigation.tsx:44-60` - Consistent navigation button styling pattern
 - `/src/app/globals.css` - Custom CSS animations and keyframes for premium effects
 - `/src/types/booth.ts` - TypeScript interface hierarchy (DeluxeBoothData vs StandardBoothData)

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowLeft } from 'lucide-react'
 
 // Navigation links removed - keeping only logo and CTA button
 
@@ -34,18 +35,28 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* CTA Button */}
+            {/* Back to Sessions Button */}
             <div>
               <motion.a
                 href="https://www.myblueprint.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2 bg-primary-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                className="group flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-xl hover:bg-primary-blue/5 transition-all duration-200"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <span className="text-white">&lt;</span>
-                Back to Sessions
+                <div className="relative">
+                  <ArrowLeft className="w-4 h-4 text-primary-blue" />
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-primary-blue/20"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileHover={{ scale: 1.5, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </div>
+                <span className="text-sm font-medium text-neutral-5 group-hover:text-primary-blue">
+                  Career Launch Sessions
+                </span>
               </motion.a>
             </div>
 

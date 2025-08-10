@@ -11,20 +11,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/silver-booth-template/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/silver-booth-template/page.js"
-    ],
     "/deluxe-booth-template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/deluxe-booth-template/page.js"
     ],
-    "/gold-booth-template/page": [
+    "/silver-booth-template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/gold-booth-template/page.js"
+      "static/chunks/app/silver-booth-template/page.js"
     ]
   }
 }

@@ -431,7 +431,7 @@ export const greenEnergySponsor: StandardBoothData = {
       type: 'video'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'View Open Positions',
     url: 'https://example.com/careers/green-energy',
@@ -515,7 +515,7 @@ export const nexusEngineeringSponsor: StandardBoothData = {
       type: 'video'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'Engineering Careers',
     url: 'https://example.com/nexus-careers',
@@ -599,7 +599,7 @@ export const strategyPlusSponsor: StandardBoothData = {
       type: 'document'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'Join Our Team',
     url: 'https://example.com/sp-careers',
@@ -684,7 +684,7 @@ export const digitalMarketingHubSponsor: StandardBoothData = {
       type: 'video'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'Join Our Team',
     url: 'https://example.com/careers/dmh',
@@ -766,7 +766,7 @@ export const eduTechInnovateSponsor: StandardBoothData = {
       type: 'link'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'View Openings',
     url: 'https://example.com/edutech-jobs',
@@ -839,7 +839,7 @@ export const retailPlusSponsor: StandardBoothData = {
       type: 'link'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'Store Careers',
     url: 'https://example.com/retail-careers',
@@ -912,7 +912,7 @@ export const smartManufacturingSponsor: StandardBoothData = {
       type: 'document'
     }
   ],
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScEAquY5WRgyx8Ih3-Q23q5aItGiVH6IvkvA6OftbUbfmp4ag/viewform?embedded=true',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdXvNDC7ioY2AlJRP84GJfsJ7dsqCQZgR_Xra9zYL0T7QGbpA/viewform?embedded=true',
   primaryCTA: {
     text: 'Factory Jobs',
     url: 'https://example.com/mfg-jobs',

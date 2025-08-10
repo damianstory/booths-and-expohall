@@ -592,7 +592,7 @@ export default function ExpoHall() {
                   Take a screenshot of the booths you visited and add them to that portfolio along with a reflection of what you found interesting about the company, and what questions you have for them.
                   <br />
                   <br />
-                  <span className="underline">Grade 11s & 12s:</span> Add at least 10 companies, and 5 post-secondaries to your Career Launch Portfolio with reflections, and be entered to win one of three $1000 scholarships.
+                  <span className="underline">Grade 11s & 12s:</span> Add screenshots of from inside the booths of at least 10 companies, and 5 post-secondaries to your Career Launch Portfolio - with reflections, and be entered to win one of three $1000 scholarships.
                 </p>
               </div>
             </div>
