@@ -13,7 +13,6 @@ const heroContent = {
   subtext: {
     line1: "Meet the companies investing in",
     line2: "Canada's future workforce.",
-    
     line3: "You."
   }
 }
@@ -66,7 +65,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
               >
                 <span className="block">{heroContent.subtext.line1}</span>
-                <span className="block mb-4">{heroContent.subtext.line2}</span>
+                <span className="block">{heroContent.subtext.line2}</span>
                 <span className="block">{heroContent.subtext.line3}</span>
               </motion.p>
             </div>
