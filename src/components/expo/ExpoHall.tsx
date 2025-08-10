@@ -578,25 +578,38 @@ export default function ExpoHall() {
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h2 className="text-4xl font-black mb-4">Start Exploring</h2>
             <p className="text-lg font-light text-neutral-3 mb-6 max-w-2xl mx-auto">
-              Visit individual booths to learn more about each organization, watch videos, 
-              download resources, and connect with recruiters.
+              Sponsor booths will be open from November 25 - December 31st, 2025 
+              <br />
+              to all myBlueprint users across Canada.
+              <br />
+              <br />
+              Recordings will be available to watch on-demand as of December 3rd, 2025.
+              <br />
+              Bookmark this page for easy access.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
-                <span className="text-2xl font-bold">{sponsors.length}+</span>
-                <p className="text-sm">Organizations</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
-                <span className="text-2xl font-bold">1000s</span>
-                <p className="text-sm">of Opportunities</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
-                <span className="text-2xl font-bold">5</span>
-                <p className="text-sm">Pathways</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
-                <span className="text-2xl font-bold">10+</span>
-                <p className="text-sm">Industries</p>
+            <div className="flex justify-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-12 py-6 max-w-4xl w-full">
+                <div className="flex flex-wrap gap-8 justify-center items-center text-center">
+                  <div>
+                    <span className="text-2xl font-bold">10+</span>
+                    <p className="text-sm">Organizations</p>
+                  </div>
+                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
+                  <div>
+                    <span className="text-2xl font-bold">1000s</span>
+                    <p className="text-sm">of Opportunities</p>
+                  </div>
+                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
+                  <div>
+                    <span className="text-2xl font-bold">5</span>
+                    <p className="text-sm">Pathways</p>
+                  </div>
+                  <div className="hidden sm:block w-px h-8 bg-white/20"></div>
+                  <div>
+                    <span className="text-2xl font-bold">10+</span>
+                    <p className="text-sm">Industries</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

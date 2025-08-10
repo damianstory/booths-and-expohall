@@ -51,32 +51,44 @@ export default function FilterBar({
   return (
     <div className="relative bg-white rounded-xl shadow-lg p-6 mb-8">
       {/* Action Buttons Container - Responsive positioning */}
-      <div className="flex gap-3 mb-4 min-[800px]:absolute min-[800px]:top-4 min-[800px]:right-4 min-[800px]:mb-0 min-[800px]:flex-col min-[800px]:gap-2">
+      <div className="flex gap-3 mb-4 min-[800px]:absolute min-[800px]:top-4 min-[800px]:right-4 min-[800px]:mb-0 min-[800px]:flex-row-reverse min-[800px]:gap-2">
         {/* Prize Filter Toggle */}
-        <button
-          onClick={() => onPrizesOnlyChange(!showPrizesOnly)}
-          className={showPrizesOnly 
-            ? "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-gradient-to-r from-[#0092FF] to-blue-600 shadow-lg z-10 hover:from-blue-600 hover:to-[#0092FF]"
-            : "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-[#0092FF] hover:to-sky-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
-          }
-          title={showPrizesOnly ? 'Showing booths with prizes only' : 'Show all booths'}
-        >
-          <Gift 
+        <div className="relative group/tooltip">
+          <button
+            onClick={() => onPrizesOnlyChange(!showPrizesOnly)}
             className={showPrizesOnly 
-              ? "w-5 h-5 transition-colors duration-200 text-white"
-              : "w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white"
+              ? "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-gradient-to-r from-[#0092FF] to-blue-600 shadow-lg z-10 hover:from-blue-600 hover:to-[#0092FF]"
+              : "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-[#0092FF] hover:to-sky-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
             }
-          />
-        </button>
+            title={showPrizesOnly ? 'Showing booths with prizes only' : 'Show all booths'}
+          >
+            <Gift 
+              className={showPrizesOnly 
+                ? "w-5 h-5 transition-colors duration-200 text-white"
+                : "w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white"
+              }
+            />
+          </button>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
+            Booths that have prizes
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+          </div>
+        </div>
 
         {/* Random Booth Selector */}
-        <button
-          onClick={onRandomSelect}
-          className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
-          title="Visit a random booth"
-        >
-          <Dices className="w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white" />
-        </button>
+        <div className="relative group/tooltip">
+          <button
+            onClick={onRandomSelect}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ease-out group bg-transparent hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 border border-gray-400 hover:border-transparent z-10 hover:shadow-lg"
+            title="Visit a random booth"
+          >
+            <Dices className="w-5 h-5 transition-colors duration-200 text-[#65738B] group-hover:text-white" />
+          </button>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
+            Random booth
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+          </div>
+        </div>
       </div>
 
       {/* Post-Secondary Filter */}
