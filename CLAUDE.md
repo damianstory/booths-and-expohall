@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features two booth types (Deluxe and Standard) with tier-based styling (Platinum, Gold, Silver) and modular components for different content sections.
+This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedicated platform for showcasing sponsor companies through immersive digital booth experiences. The system features two booth types (Deluxe and Standard) with tier-based styling (Platinum, Silver) and modular components for different content sections.
 
 ## Technology Stack
 
@@ -22,7 +22,7 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 ```
 /                       # Homepage (ExpoHall with sponsor cards)
 /deluxe-booth-template  # Platinum tier booth example
-/gold-booth-template    # Gold tier booth example  
+  
 /silver-booth-template  # Silver tier booth example
 /test                   # Test page
 ```
@@ -32,7 +32,6 @@ This is the **myBlueprint Career Launch Virtual Expo & Booth System** - a dedica
 src/
 ├── app/
 │   ├── deluxe-booth-template/  # Platinum tier booth demo
-│   ├── gold-booth-template/    # Gold tier booth demo
 │   ├── silver-booth-template/  # Silver tier booth demo
 │   ├── test/                   # Test page
 │   ├── globals.css             # Global styles with CSS variables
@@ -41,7 +40,7 @@ src/
 ├── components/
 │   ├── booth/                  # Individual booth components
 │   │   ├── DeluxeBooth.tsx     # Platinum tier booth (full features)
-│   │   ├── StandardBooth.tsx   # Gold/Silver tier booth (simplified)
+│   │   ├── StandardBooth.tsx   # Silver tier booth (simplified)
 │   │   └── sections/           # Modular booth sections
 │   │       ├── BoothHeader.tsx
 │   │       ├── CompanyStory.tsx
@@ -86,12 +85,12 @@ src/
 
 ### Two-Booth System
 - **DeluxeBooth** (Platinum Tier): Full-featured booth with bento grid, video, resources, interactive activities
-- **StandardBooth** (Gold/Silver Tiers): Simplified booth with basic sections and Google Form embed
+- **StandardBooth** (Silver Tier): Simplified booth with basic sections and Google Form embed
 
 ### Tier-Based Styling System
 The `BoothCard` component uses a sophisticated tier-based styling system:
 - **Platinum**: Enhanced animations, floating effects, shimmer, particle effects, larger grid span, animated gradient header text
-- **Gold**: Standard animations, gradient backgrounds, medium grid span  
+  
 - **Silver**: Minimal effects, basic hover states, small grid span
 
 ### Multi-Select Filter System
@@ -167,7 +166,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 
 ### Interface Hierarchy
 - **`DeluxeBoothData`** - Full-featured booth (Platinum tier) with all sections
-- **`StandardBoothData`** - Simplified booth (Gold/Silver tiers) with Google Form
+- **`StandardBoothData`** - Simplified booth (Silver tier) with Google Form
 - **Shared interfaces**:
   - `VideoContent` - Multi-provider video embed support
   - `ResourceItem` - Downloadable resources with type detection
@@ -179,7 +178,7 @@ sample-sponsors.ts → Booth Pages → Booth Sections (individual features)
 
 ### Sample Data Structure
 - **3 Platinum tier sponsors**: TechCorp, HealthPlus, Global Finance
-- **3 Gold tier sponsors**: Green Energy, Nexus Engineering, Strategy Plus  
+  
 - **4 Silver tier sponsors**: Digital Marketing Hub, EduTech, Retail Plus, Smart Manufacturing
 - Each sponsor includes industry classification, pathway mapping, and post-secondary flags for filtering
 
@@ -207,7 +206,7 @@ npm run lint
 - When enhancing BoothCard styling, always test hover behavior to prevent dual refresh issues
 - Use pure CSS hover effects (`group-hover:`) over JavaScript state when possible
 - For animations, prefer CSS transforms over layout-changing properties
-- Test tier-specific styling across all three tiers (Platinum, Gold, Silver)
+- Test tier-specific styling across both tiers (Platinum, Silver)
 
 ### Styling Best Practices
 - **Tailwind dynamic classes**: Avoid template literals with conditionals, use complete class strings in ternary operators

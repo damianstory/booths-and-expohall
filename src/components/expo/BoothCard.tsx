@@ -46,14 +46,6 @@ export default function BoothCard({ sponsor, index = 0 }: BoothCardProps) {
           animation: 'animate-float',
           priority: 1
         }
-      case 'gold':
-        return {
-          wrapper: 'col-span-2 md:col-span-2 lg:col-span-1',
-          card: 'bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-transparent hover:border-amber-400',
-          trophy: 'bg-gradient-to-r from-amber-500 to-yellow-600 text-yellow-100',
-          glow: 'hover:shadow-xl hover:shadow-amber-400/20',
-          priority: 2
-        }
       case 'silver':
         return {
           wrapper: 'col-span-2 md:col-span-1 lg:col-span-1',

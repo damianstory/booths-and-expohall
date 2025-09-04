@@ -60,9 +60,9 @@ export default function ExpoHall() {
       filtered = filtered.filter(sponsor => sponsor.isPrize)
     }
 
-    // Sort by tier priority: platinum > gold > silver
+    // Sort by tier priority: platinum > silver
     filtered.sort((a, b) => {
-      const tierOrder = { platinum: 0, gold: 1, silver: 2 }
+      const tierOrder = { platinum: 0, silver: 1 }
       return tierOrder[a.tier] - tierOrder[b.tier]
     })
 
@@ -72,10 +72,9 @@ export default function ExpoHall() {
   // Group filtered sponsors by tier
   const sponsorsByTier = useMemo(() => {
     const platinum = filteredSponsors.filter(s => s.tier === 'platinum')
-    const gold = filteredSponsors.filter(s => s.tier === 'gold')
     const silver = filteredSponsors.filter(s => s.tier === 'silver')
     
-    return { platinum, gold, silver }
+    return { platinum, silver }
   }, [filteredSponsors])
 
   // Count statistics
@@ -84,7 +83,6 @@ export default function ExpoHall() {
       postSecondary: sponsors.filter(s => s.isPostSecondary).length,
       employers: sponsors.filter(s => !s.isPostSecondary).length,
       platinum: sponsors.filter(s => s.tier === 'platinum').length,
-      gold: sponsors.filter(s => s.tier === 'gold').length,
       silver: sponsors.filter(s => s.tier === 'silver').length
     }
   }, [])
@@ -220,7 +218,7 @@ export default function ExpoHall() {
   const generateSkeletonCards = () => {
     const skeletons = []
     for (let i = 0; i < 12; i++) {
-      const tier = i < 2 ? 'platinum' : i < 6 ? 'gold' : 'silver'
+      const tier = i < 2 ? 'platinum' : 'silver'
       skeletons.push(<BoothCardSkeleton key={i} tier={tier} index={i} />)
     }
     return skeletons
@@ -435,42 +433,6 @@ export default function ExpoHall() {
                       </div>
                     )}
 
-                    {/* Gold Sponsors Section */}
-                    {sponsorsByTier.gold.length > 0 && (
-                      <div>
-                        <motion.div 
-                          className="mb-6"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-                        >
-                          <h2 className="text-2xl font-bold text-amber-600 mb-2">
-                            Gold Sponsors
-                          </h2>
-                          <div className="h-1 w-20 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full"></div>
-                        </motion.div>
-                        <div className="expo-booth-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                          {sponsorsByTier.gold.map((sponsor, index) => (
-                            <motion.div
-                              key={sponsor.id}
-                              initial={{ opacity: 0, y: 30 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ 
-                                duration: 0.5,
-                                delay: (sponsorsByTier.platinum.length + index) * 0.05,
-                                ease: [0.4, 0, 0.2, 1]
-                              }}
-                            >
-                              <BoothCardWithHighlight 
-                                sponsor={sponsor} 
-                                index={sponsorsByTier.platinum.length + index}
-                              />
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
                     {/* Silver Sponsors Section */}
                     {sponsorsByTier.silver.length > 0 && (
                       <div>
@@ -478,7 +440,7 @@ export default function ExpoHall() {
                           className="mb-6"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                          transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
                         >
                           <h2 className="text-xl font-semibold text-gray-600 mb-2">
                             Silver Sponsors
@@ -493,13 +455,13 @@ export default function ExpoHall() {
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ 
                                 duration: 0.5,
-                                delay: (sponsorsByTier.platinum.length + sponsorsByTier.gold.length + index) * 0.05,
+                                delay: (sponsorsByTier.platinum.length + index) * 0.05,
                                 ease: [0.4, 0, 0.2, 1]
                               }}
                             >
                               <BoothCardWithHighlight 
                                 sponsor={sponsor} 
-                                index={sponsorsByTier.platinum.length + sponsorsByTier.gold.length + index}
+                                index={sponsorsByTier.platinum.length + index}
                               />
                             </motion.div>
                           ))}

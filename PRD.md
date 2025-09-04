@@ -147,7 +147,7 @@ interface DeluxeBoothData {
 }
 ```
 
-### Standard Booth Content (Silver/Gold Sponsors)
+### Standard Booth Content (Silver Sponsors)
 
 ```typescript
 interface StandardBoothData {

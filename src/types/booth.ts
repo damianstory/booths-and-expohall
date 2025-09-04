@@ -76,7 +76,7 @@ export interface EngagementActivityData {
   embedType?: 'iframe' | 'skills-gap-quiz'
 }
 
-export type BoothTier = 'platinum' | 'gold' | 'silver'
+export type BoothTier = 'platinum' | 'silver'
 
 export type Industry = 
   | 'Technology' 
@@ -125,7 +125,7 @@ export interface StandardBoothData {
   id: string
   name: string
   slug: string
-  tier: 'gold' | 'silver'
+  tier: 'silver'
   industry: Industry
   isPostSecondary: boolean
   pathway: Pathway

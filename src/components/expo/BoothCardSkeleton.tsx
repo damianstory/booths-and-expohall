@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 interface BoothCardSkeletonProps {
-  tier?: 'platinum' | 'gold' | 'silver'
+  tier?: 'platinum' | 'silver'
   index?: number
 }
 
@@ -17,12 +17,6 @@ export default function BoothCardSkeleton({ tier = 'silver', index = 0 }: BoothC
           wrapper: 'col-span-2 md:col-span-2 lg:col-span-2',
           height: 'h-[320px]',
           logoSize: 'w-24 h-24'
-        }
-      case 'gold':
-        return {
-          wrapper: 'col-span-2 md:col-span-2 lg:col-span-1',
-          height: 'h-[320px]',
-          logoSize: 'w-20 h-20'
         }
       case 'silver':
         return {
